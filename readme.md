@@ -45,7 +45,8 @@
 ├── webbench-1.5   压力测试
 ├── build          
 │   └── Makefile
-├── Makefile
+├── CMakeLists.txt
+├── autobuild.sh
 ├── LICENSE
 └── readme.md
 ```
@@ -68,35 +69,7 @@ CREATE TABLE user(
 INSERT INTO user(username, password) VALUES('name', 'password');
 ```
 
-```bash
-make
-./bin/server
-```
-
-## 单元测试
-```bash
-cd test
-make
-./test
-```
-
 ## 压力测试
-![image-webbench](https://github.com/markparticle/WebServer/blob/master/readme.assest/%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95.png)
-```bash
 ./webbench-1.5/webbench -c 100 -t 10 http://ip:port/
 ./webbench-1.5/webbench -c 1000 -t 10 http://ip:port/
 ./webbench-1.5/webbench -c 5000 -t 10 http://ip:port/
-./webbench-1.5/webbench -c 10000 -t 10 http://ip:port/
-```
-* 测试环境: Ubuntu:19.10 cpu:i5-8400 内存:8G 
-* QPS 10000+
-
-## TODO
-* config配置
-* 完善单元测试
-* 实现循环缓冲区
-
-## 致谢
-Linux高性能服务器编程，游双著.
-
-[@qinguoyi](https://github.com/qinguoyi/TinyWebServer)
