@@ -15,6 +15,7 @@
 * Linux
 * C++14
 * MySql
+* kafka
 
 ## 目录树
 ```
@@ -23,6 +24,7 @@
 │   ├── buffer
 │   ├── config
 │   ├── http
+│   ├── kafka
 │   ├── log
 │   ├── timer
 │   ├── pool

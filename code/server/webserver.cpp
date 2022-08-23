@@ -16,7 +16,12 @@ WebServer::WebServer(
             port_(port), openLinger_(OptLinger), timeoutMS_(timeoutMS), isClose_(false),
             timer_(new HeapTimer()), threadpool_(new ThreadPool(threadNum)), epoller_(new Epoller())
     {
-    srcDir_ = getcwd(nullptr, 256);
+    srcDir_ = getcwd(nullptr, 256); //char * getcwd(char * buf, size_t size); getcwd()会将当前的工作目录绝对路径复制到参数buf 所指的内存空间，参数size 为buf 的空间大小。 
+    /*
+    1、在调用此函数时，buf 所指的内存空间要足够大。若工作目录绝对路径的字符串长度超过参数size 大小，则返回NULL，errno 的值则为ERANGE。
+    2、倘若参数buf 为NULL，getcwd()会依参数size 的大小自动配置内存(使用malloc())，
+        如果参数size 也为0，则getcwd()会依工作目录绝对路径的字符串程度来决定所配置的内存大小，进程可以在使用完次字符串后利用free()来释放此空间。
+    */
     assert(srcDir_);
     strncat(srcDir_, "/resources/", 16);
     HttpConn::userCount = 0;
@@ -27,8 +32,7 @@ WebServer::WebServer(
     if(!InitSocket_()) { isClose_ = true;}
 
     if(openLog) {
-        Log::Instance()->init(logLevel, "./log", ".log", logQueSize);
-        if(isClose_) { LOG_ERROR("========== Server init error!=========="); }
+        if(isClose_) { LOG_ERR("========== Server init error!=========="); } //服务器关闭
         else {
             LOG_INFO("========== Server init ==========");
             LOG_INFO("Port:%d, OpenLinger: %s", port_, OptLinger? "true":"false");
@@ -101,7 +105,7 @@ void WebServer::Start() {
                 assert(users_.count(fd) > 0);
                 DealWrite_(&users_[fd]);
             } else {
-                LOG_ERROR("Unexpected event");
+                LOG_ERR("Unexpected event");
             }
         }
     }
@@ -111,7 +115,6 @@ void WebServer::SendError_(int fd, const char*info) {
     assert(fd > 0);
     int ret = send(fd, info, strlen(info), 0);
     if(ret < 0) {
-        LOG_WARN("send error to client[%d] error!", fd);
     }
     close(fd);
 }
@@ -142,7 +145,6 @@ void WebServer::DealListen_() {
         if(fd <= 0) { return;}
         else if(HttpConn::userCount >= MAX_FD) {
             SendError_(fd, "Server busy!");
-            LOG_WARN("Clients is full!");
             return;
         }
         AddClient_(fd, addr);
@@ -213,7 +215,7 @@ bool WebServer::InitSocket_() {
     int ret;
     struct sockaddr_in addr;
     if(port_ > 65535 || port_ < 1024) {
-        LOG_ERROR("Port:%d error!",  port_);
+        LOG_ERR("Port:%d error!",  port_);
         return false;
     }
     addr.sin_family = AF_INET;
@@ -228,14 +230,14 @@ bool WebServer::InitSocket_() {
 
     listenFd_ = socket(AF_INET, SOCK_STREAM, 0);
     if(listenFd_ < 0) {
-        LOG_ERROR("Create socket error!", port_);
+        LOG_ERR("Create socket error!", port_);
         return false;
     }
 
     ret = setsockopt(listenFd_, SOL_SOCKET, SO_LINGER, &optLinger, sizeof(optLinger));
     if(ret < 0) {
         close(listenFd_);
-        LOG_ERROR("Init linger error!", port_);
+        LOG_ERR("Init linger error!", port_);
         return false;
     }
 
@@ -244,27 +246,27 @@ bool WebServer::InitSocket_() {
     /* 只有最后一个套接字会正常接收数据。 */
     ret = setsockopt(listenFd_, SOL_SOCKET, SO_REUSEADDR, (const void*)&optval, sizeof(int));
     if(ret == -1) {
-        LOG_ERROR("set socket setsockopt error !");
+        LOG_ERR("set socket setsockopt error !");
         close(listenFd_);
         return false;
     }
 
     ret = bind(listenFd_, (struct sockaddr *)&addr, sizeof(addr));
     if(ret < 0) {
-        LOG_ERROR("Bind Port:%d error!", port_);
+        LOG_ERR("Bind Port:%d error!", port_);
         close(listenFd_);
         return false;
     }
 
     ret = listen(listenFd_, 6);
     if(ret < 0) {
-        LOG_ERROR("Listen port:%d error!", port_);
+        LOG_ERR("Listen port:%d error!", port_);
         close(listenFd_);
         return false;
     }
     ret = epoller_->AddFd(listenFd_,  listenEvent_ | EPOLLIN);
     if(ret == 0) {
-        LOG_ERROR("Add listen error!");
+        LOG_ERR("Add listen error!");
         close(listenFd_);
         return false;
     }

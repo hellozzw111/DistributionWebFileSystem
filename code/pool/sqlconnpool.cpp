@@ -5,6 +5,7 @@
  */ 
 
 #include "sqlconnpool.h"
+#include <assert.h>
 using namespace std;
 
 SqlConnPool::SqlConnPool() {
@@ -25,14 +26,14 @@ void SqlConnPool::Init(const char* host, int port,
         MYSQL *sql = nullptr;
         sql = mysql_init(sql);
         if (!sql) {
-            LOG_ERROR("MySql init error!");
+            LOG_ERR("MySql init error!");
             assert(sql);
         }
         sql = mysql_real_connect(sql, host,
                                  user, pwd,
                                  dbName, port, nullptr, 0);
         if (!sql) {
-            LOG_ERROR("MySql Connect error!");
+            LOG_ERR("MySql Connect error!");
         }
         connQue_.push(sql);
     }
@@ -43,7 +44,6 @@ void SqlConnPool::Init(const char* host, int port,
 MYSQL* SqlConnPool::GetConn() {
     MYSQL *sql = nullptr;
     if(connQue_.empty()){
-        LOG_WARN("SqlConnPool busy!");
         return nullptr;
     }
     sem_wait(&semId_);
