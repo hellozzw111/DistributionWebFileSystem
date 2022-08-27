@@ -42,6 +42,7 @@
 ├── bin            可执行文件
 │   └── server
 ├── log            日志文件
+│   └── 日期.log
 ├── webbench-1.5   压力测试
 ├── build          
 │   └── Makefile
