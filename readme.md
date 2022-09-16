@@ -69,10 +69,3 @@ CREATE TABLE user(
 // 添加数据
 INSERT INTO user(username, password) VALUES('name', 'password');
 ```
-
-## 压力测试
-./webbench-1.5/webbench -c 100 -t 10 http://ip:port/
-./webbench-1.5/webbench -c 1000 -t 10 http://ip:port/
-./webbench-1.5/webbench -c 5000 -t 10 http://ip:port/
-
-## git测试
