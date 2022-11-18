@@ -1,0 +1,3 @@
+[submodule "code/thirdparty/mprpc"]
+	path = code/thirdparty/mprpc
+	url = https://github.com/hellozzw111/mprpc.git
