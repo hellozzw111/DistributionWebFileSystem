@@ -17,6 +17,9 @@ include_directories(${PROJECT_SOURCE_DIR}/code/log)
 include_directories(${PROJECT_SOURCE_DIR}/code/pool)
 include_directories(${PROJECT_SOURCE_DIR}/code/server)
 include_directories(${PROJECT_SOURCE_DIR}/code/timer)
+include_directories(${PROJECT_SOURCE_DIR}/code/nameserver)
+include_directories(${PROJECT_SOURCE_DIR}/code/dataserver)
+include_directories(${PROJECT_SOURCE_DIR}/code/thirdparty/mprpc/lib/include)
 
 
 # 加载子目录

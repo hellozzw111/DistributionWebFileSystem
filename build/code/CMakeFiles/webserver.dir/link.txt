@@ -1,1 +1,0 @@
-/usr/bin/c++  -g  -rdynamic CMakeFiles/webserver.dir/main.cpp.o  -o ../../bin/webserver -lrdkafka++ -lpthread -lmysqlclient 

@@ -6,8 +6,11 @@ add_subdirectory(log)
 add_subdirectory(pool)
 add_subdirectory(server)
 add_subdirectory(timer)
+add_subdirectory(nameserver)
+add_subdirectory(dataserver)
 
 set(SRC_LIST main.cpp)
 add_executable(webserver ${SRC_LIST})
-target_link_libraries(webserver rdkafka++ pthread mysqlclient)
+link_directories(${PROJECT_SOURCE_DIR}/code/thirdparty/mprpc/lib/)
+target_link_libraries(webserver rdkafka++ pthread mysqlclient, mprpc)
 

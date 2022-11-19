@@ -1,0 +1,4 @@
+ip: 124.220.24.66
+port: 11311
+file_path: /root/file_storage/
+server_name: node1
