@@ -23,6 +23,7 @@
 #include <google/protobuf/io/coded_stream.h>
 #include <google/protobuf/arena.h>
 #include <google/protobuf/arenastring.h>
+#include <google/protobuf/generated_message_bases.h>
 #include <google/protobuf/generated_message_util.h>
 #include <google/protobuf/metadata_lite.h>
 #include <google/protobuf/generated_message_reflection.h>
@@ -52,26 +53,58 @@ extern AddRequestDefaultTypeInternal _AddRequest_default_instance_;
 class AddResponse;
 struct AddResponseDefaultTypeInternal;
 extern AddResponseDefaultTypeInternal _AddResponse_default_instance_;
+class ChangeMsRequest;
+struct ChangeMsRequestDefaultTypeInternal;
+extern ChangeMsRequestDefaultTypeInternal _ChangeMsRequest_default_instance_;
+class ChangeMsResponse;
+struct ChangeMsResponseDefaultTypeInternal;
+extern ChangeMsResponseDefaultTypeInternal _ChangeMsResponse_default_instance_;
 class DelRequest;
 struct DelRequestDefaultTypeInternal;
 extern DelRequestDefaultTypeInternal _DelRequest_default_instance_;
 class DelResponse;
 struct DelResponseDefaultTypeInternal;
 extern DelResponseDefaultTypeInternal _DelResponse_default_instance_;
+class DownGradeRequest;
+struct DownGradeRequestDefaultTypeInternal;
+extern DownGradeRequestDefaultTypeInternal _DownGradeRequest_default_instance_;
+class DownGradeResponse;
+struct DownGradeResponseDefaultTypeInternal;
+extern DownGradeResponseDefaultTypeInternal _DownGradeResponse_default_instance_;
+class DupRequest;
+struct DupRequestDefaultTypeInternal;
+extern DupRequestDefaultTypeInternal _DupRequest_default_instance_;
+class DupResponse;
+struct DupResponseDefaultTypeInternal;
+extern DupResponseDefaultTypeInternal _DupResponse_default_instance_;
 class GetRequest;
 struct GetRequestDefaultTypeInternal;
 extern GetRequestDefaultTypeInternal _GetRequest_default_instance_;
 class GetResponse;
 struct GetResponseDefaultTypeInternal;
 extern GetResponseDefaultTypeInternal _GetResponse_default_instance_;
+class UpGradeRequest;
+struct UpGradeRequestDefaultTypeInternal;
+extern UpGradeRequestDefaultTypeInternal _UpGradeRequest_default_instance_;
+class UpGradeResponse;
+struct UpGradeResponseDefaultTypeInternal;
+extern UpGradeResponseDefaultTypeInternal _UpGradeResponse_default_instance_;
 }  // namespace dataserver
 PROTOBUF_NAMESPACE_OPEN
 template<> ::dataserver::AddRequest* Arena::CreateMaybeMessage<::dataserver::AddRequest>(Arena*);
 template<> ::dataserver::AddResponse* Arena::CreateMaybeMessage<::dataserver::AddResponse>(Arena*);
+template<> ::dataserver::ChangeMsRequest* Arena::CreateMaybeMessage<::dataserver::ChangeMsRequest>(Arena*);
+template<> ::dataserver::ChangeMsResponse* Arena::CreateMaybeMessage<::dataserver::ChangeMsResponse>(Arena*);
 template<> ::dataserver::DelRequest* Arena::CreateMaybeMessage<::dataserver::DelRequest>(Arena*);
 template<> ::dataserver::DelResponse* Arena::CreateMaybeMessage<::dataserver::DelResponse>(Arena*);
+template<> ::dataserver::DownGradeRequest* Arena::CreateMaybeMessage<::dataserver::DownGradeRequest>(Arena*);
+template<> ::dataserver::DownGradeResponse* Arena::CreateMaybeMessage<::dataserver::DownGradeResponse>(Arena*);
+template<> ::dataserver::DupRequest* Arena::CreateMaybeMessage<::dataserver::DupRequest>(Arena*);
+template<> ::dataserver::DupResponse* Arena::CreateMaybeMessage<::dataserver::DupResponse>(Arena*);
 template<> ::dataserver::GetRequest* Arena::CreateMaybeMessage<::dataserver::GetRequest>(Arena*);
 template<> ::dataserver::GetResponse* Arena::CreateMaybeMessage<::dataserver::GetResponse>(Arena*);
+template<> ::dataserver::UpGradeRequest* Arena::CreateMaybeMessage<::dataserver::UpGradeRequest>(Arena*);
+template<> ::dataserver::UpGradeResponse* Arena::CreateMaybeMessage<::dataserver::UpGradeResponse>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace dataserver {
 
@@ -1010,6 +1043,1166 @@ class DelRequest final :
   union { Impl_ _impl_; };
   friend struct ::TableStruct_data_5fserv_2eproto;
 };
+// -------------------------------------------------------------------
+
+class DupRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:dataserver.DupRequest) */ {
+ public:
+  inline DupRequest() : DupRequest(nullptr) {}
+  ~DupRequest() override;
+  explicit PROTOBUF_CONSTEXPR DupRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  DupRequest(const DupRequest& from);
+  DupRequest(DupRequest&& from) noexcept
+    : DupRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline DupRequest& operator=(const DupRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline DupRequest& operator=(DupRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const DupRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const DupRequest* internal_default_instance() {
+    return reinterpret_cast<const DupRequest*>(
+               &_DupRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    6;
+
+  friend void swap(DupRequest& a, DupRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(DupRequest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(DupRequest* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  DupRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<DupRequest>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const DupRequest& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const DupRequest& from) {
+    DupRequest::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(DupRequest* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "dataserver.DupRequest";
+  }
+  protected:
+  explicit DupRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kContentsFieldNumber = 1,
+  };
+  // string contents = 1;
+  void clear_contents();
+  const std::string& contents() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_contents(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_contents();
+  PROTOBUF_NODISCARD std::string* release_contents();
+  void set_allocated_contents(std::string* contents);
+  private:
+  const std::string& _internal_contents() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_contents(const std::string& value);
+  std::string* _internal_mutable_contents();
+  public:
+
+  // @@protoc_insertion_point(class_scope:dataserver.DupRequest)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr contents_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_data_5fserv_2eproto;
+};
+// -------------------------------------------------------------------
+
+class DupResponse final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:dataserver.DupResponse) */ {
+ public:
+  inline DupResponse() : DupResponse(nullptr) {}
+  ~DupResponse() override;
+  explicit PROTOBUF_CONSTEXPR DupResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  DupResponse(const DupResponse& from);
+  DupResponse(DupResponse&& from) noexcept
+    : DupResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline DupResponse& operator=(const DupResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline DupResponse& operator=(DupResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const DupResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const DupResponse* internal_default_instance() {
+    return reinterpret_cast<const DupResponse*>(
+               &_DupResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    7;
+
+  friend void swap(DupResponse& a, DupResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(DupResponse* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(DupResponse* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  DupResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<DupResponse>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const DupResponse& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const DupResponse& from) {
+    DupResponse::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(DupResponse* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "dataserver.DupResponse";
+  }
+  protected:
+  explicit DupResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kSuccessFieldNumber = 1,
+  };
+  // bool success = 1;
+  void clear_success();
+  bool success() const;
+  void set_success(bool value);
+  private:
+  bool _internal_success() const;
+  void _internal_set_success(bool value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:dataserver.DupResponse)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    bool success_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_data_5fserv_2eproto;
+};
+// -------------------------------------------------------------------
+
+class ChangeMsRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:dataserver.ChangeMsRequest) */ {
+ public:
+  inline ChangeMsRequest() : ChangeMsRequest(nullptr) {}
+  ~ChangeMsRequest() override;
+  explicit PROTOBUF_CONSTEXPR ChangeMsRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  ChangeMsRequest(const ChangeMsRequest& from);
+  ChangeMsRequest(ChangeMsRequest&& from) noexcept
+    : ChangeMsRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline ChangeMsRequest& operator=(const ChangeMsRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ChangeMsRequest& operator=(ChangeMsRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const ChangeMsRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const ChangeMsRequest* internal_default_instance() {
+    return reinterpret_cast<const ChangeMsRequest*>(
+               &_ChangeMsRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    8;
+
+  friend void swap(ChangeMsRequest& a, ChangeMsRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(ChangeMsRequest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ChangeMsRequest* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  ChangeMsRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<ChangeMsRequest>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const ChangeMsRequest& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const ChangeMsRequest& from) {
+    ChangeMsRequest::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(ChangeMsRequest* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "dataserver.ChangeMsRequest";
+  }
+  protected:
+  explicit ChangeMsRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kSlaveNameFieldNumber = 1,
+  };
+  // repeated string slave_name = 1;
+  int slave_name_size() const;
+  private:
+  int _internal_slave_name_size() const;
+  public:
+  void clear_slave_name();
+  const std::string& slave_name(int index) const;
+  std::string* mutable_slave_name(int index);
+  void set_slave_name(int index, const std::string& value);
+  void set_slave_name(int index, std::string&& value);
+  void set_slave_name(int index, const char* value);
+  void set_slave_name(int index, const char* value, size_t size);
+  std::string* add_slave_name();
+  void add_slave_name(const std::string& value);
+  void add_slave_name(std::string&& value);
+  void add_slave_name(const char* value);
+  void add_slave_name(const char* value, size_t size);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>& slave_name() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>* mutable_slave_name();
+  private:
+  const std::string& _internal_slave_name(int index) const;
+  std::string* _internal_add_slave_name();
+  public:
+
+  // @@protoc_insertion_point(class_scope:dataserver.ChangeMsRequest)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> slave_name_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_data_5fserv_2eproto;
+};
+// -------------------------------------------------------------------
+
+class ChangeMsResponse final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:dataserver.ChangeMsResponse) */ {
+ public:
+  inline ChangeMsResponse() : ChangeMsResponse(nullptr) {}
+  ~ChangeMsResponse() override;
+  explicit PROTOBUF_CONSTEXPR ChangeMsResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  ChangeMsResponse(const ChangeMsResponse& from);
+  ChangeMsResponse(ChangeMsResponse&& from) noexcept
+    : ChangeMsResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline ChangeMsResponse& operator=(const ChangeMsResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ChangeMsResponse& operator=(ChangeMsResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const ChangeMsResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const ChangeMsResponse* internal_default_instance() {
+    return reinterpret_cast<const ChangeMsResponse*>(
+               &_ChangeMsResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    9;
+
+  friend void swap(ChangeMsResponse& a, ChangeMsResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(ChangeMsResponse* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ChangeMsResponse* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  ChangeMsResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<ChangeMsResponse>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const ChangeMsResponse& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const ChangeMsResponse& from) {
+    ChangeMsResponse::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(ChangeMsResponse* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "dataserver.ChangeMsResponse";
+  }
+  protected:
+  explicit ChangeMsResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kSuccessFieldNumber = 1,
+  };
+  // bool success = 1;
+  void clear_success();
+  bool success() const;
+  void set_success(bool value);
+  private:
+  bool _internal_success() const;
+  void _internal_set_success(bool value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:dataserver.ChangeMsResponse)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    bool success_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_data_5fserv_2eproto;
+};
+// -------------------------------------------------------------------
+
+class DownGradeRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:dataserver.DownGradeRequest) */ {
+ public:
+  inline DownGradeRequest() : DownGradeRequest(nullptr) {}
+  explicit PROTOBUF_CONSTEXPR DownGradeRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  DownGradeRequest(const DownGradeRequest& from);
+  DownGradeRequest(DownGradeRequest&& from) noexcept
+    : DownGradeRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline DownGradeRequest& operator=(const DownGradeRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline DownGradeRequest& operator=(DownGradeRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const DownGradeRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const DownGradeRequest* internal_default_instance() {
+    return reinterpret_cast<const DownGradeRequest*>(
+               &_DownGradeRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    10;
+
+  friend void swap(DownGradeRequest& a, DownGradeRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(DownGradeRequest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(DownGradeRequest* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  DownGradeRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<DownGradeRequest>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyFrom;
+  inline void CopyFrom(const DownGradeRequest& from) {
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyImpl(*this, from);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeFrom;
+  void MergeFrom(const DownGradeRequest& from) {
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeImpl(*this, from);
+  }
+  public:
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "dataserver.DownGradeRequest";
+  }
+  protected:
+  explicit DownGradeRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:dataserver.DownGradeRequest)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+  };
+  friend struct ::TableStruct_data_5fserv_2eproto;
+};
+// -------------------------------------------------------------------
+
+class DownGradeResponse final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:dataserver.DownGradeResponse) */ {
+ public:
+  inline DownGradeResponse() : DownGradeResponse(nullptr) {}
+  ~DownGradeResponse() override;
+  explicit PROTOBUF_CONSTEXPR DownGradeResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  DownGradeResponse(const DownGradeResponse& from);
+  DownGradeResponse(DownGradeResponse&& from) noexcept
+    : DownGradeResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline DownGradeResponse& operator=(const DownGradeResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline DownGradeResponse& operator=(DownGradeResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const DownGradeResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const DownGradeResponse* internal_default_instance() {
+    return reinterpret_cast<const DownGradeResponse*>(
+               &_DownGradeResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    11;
+
+  friend void swap(DownGradeResponse& a, DownGradeResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(DownGradeResponse* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(DownGradeResponse* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  DownGradeResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<DownGradeResponse>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const DownGradeResponse& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const DownGradeResponse& from) {
+    DownGradeResponse::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(DownGradeResponse* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "dataserver.DownGradeResponse";
+  }
+  protected:
+  explicit DownGradeResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kNameFieldNumber = 2,
+    kSuccessFieldNumber = 1,
+  };
+  // string name = 2;
+  void clear_name();
+  const std::string& name() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_name(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_name();
+  PROTOBUF_NODISCARD std::string* release_name();
+  void set_allocated_name(std::string* name);
+  private:
+  const std::string& _internal_name() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_name(const std::string& value);
+  std::string* _internal_mutable_name();
+  public:
+
+  // bool success = 1;
+  void clear_success();
+  bool success() const;
+  void set_success(bool value);
+  private:
+  bool _internal_success() const;
+  void _internal_set_success(bool value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:dataserver.DownGradeResponse)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr name_;
+    bool success_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_data_5fserv_2eproto;
+};
+// -------------------------------------------------------------------
+
+class UpGradeRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:dataserver.UpGradeRequest) */ {
+ public:
+  inline UpGradeRequest() : UpGradeRequest(nullptr) {}
+  explicit PROTOBUF_CONSTEXPR UpGradeRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  UpGradeRequest(const UpGradeRequest& from);
+  UpGradeRequest(UpGradeRequest&& from) noexcept
+    : UpGradeRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline UpGradeRequest& operator=(const UpGradeRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline UpGradeRequest& operator=(UpGradeRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const UpGradeRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const UpGradeRequest* internal_default_instance() {
+    return reinterpret_cast<const UpGradeRequest*>(
+               &_UpGradeRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    12;
+
+  friend void swap(UpGradeRequest& a, UpGradeRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(UpGradeRequest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(UpGradeRequest* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  UpGradeRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<UpGradeRequest>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyFrom;
+  inline void CopyFrom(const UpGradeRequest& from) {
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyImpl(*this, from);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeFrom;
+  void MergeFrom(const UpGradeRequest& from) {
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeImpl(*this, from);
+  }
+  public:
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "dataserver.UpGradeRequest";
+  }
+  protected:
+  explicit UpGradeRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:dataserver.UpGradeRequest)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+  };
+  friend struct ::TableStruct_data_5fserv_2eproto;
+};
+// -------------------------------------------------------------------
+
+class UpGradeResponse final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:dataserver.UpGradeResponse) */ {
+ public:
+  inline UpGradeResponse() : UpGradeResponse(nullptr) {}
+  ~UpGradeResponse() override;
+  explicit PROTOBUF_CONSTEXPR UpGradeResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  UpGradeResponse(const UpGradeResponse& from);
+  UpGradeResponse(UpGradeResponse&& from) noexcept
+    : UpGradeResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline UpGradeResponse& operator=(const UpGradeResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline UpGradeResponse& operator=(UpGradeResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const UpGradeResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const UpGradeResponse* internal_default_instance() {
+    return reinterpret_cast<const UpGradeResponse*>(
+               &_UpGradeResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    13;
+
+  friend void swap(UpGradeResponse& a, UpGradeResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(UpGradeResponse* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(UpGradeResponse* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  UpGradeResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<UpGradeResponse>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const UpGradeResponse& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const UpGradeResponse& from) {
+    UpGradeResponse::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(UpGradeResponse* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "dataserver.UpGradeResponse";
+  }
+  protected:
+  explicit UpGradeResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kSuccessFieldNumber = 1,
+  };
+  // bool success = 1;
+  void clear_success();
+  bool success() const;
+  void set_success(bool value);
+  private:
+  bool _internal_success() const;
+  void _internal_set_success(bool value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:dataserver.UpGradeResponse)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    bool success_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_data_5fserv_2eproto;
+};
 // ===================================================================
 
 class DataService_Stub;
@@ -1036,6 +2229,22 @@ class DataService : public ::PROTOBUF_NAMESPACE_ID::Service {
   virtual void Del(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
                        const ::dataserver::DelRequest* request,
                        ::dataserver::DelResponse* response,
+                       ::google::protobuf::Closure* done);
+  virtual void Dup(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
+                       const ::dataserver::DupRequest* request,
+                       ::dataserver::DupResponse* response,
+                       ::google::protobuf::Closure* done);
+  virtual void ChangeMs(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
+                       const ::dataserver::ChangeMsRequest* request,
+                       ::dataserver::ChangeMsResponse* response,
+                       ::google::protobuf::Closure* done);
+  virtual void DownGrade(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
+                       const ::dataserver::DownGradeRequest* request,
+                       ::dataserver::DownGradeResponse* response,
+                       ::google::protobuf::Closure* done);
+  virtual void UpGrade(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
+                       const ::dataserver::UpGradeRequest* request,
+                       ::dataserver::UpGradeResponse* response,
                        ::google::protobuf::Closure* done);
 
   // implements Service ----------------------------------------------
@@ -1077,6 +2286,22 @@ class DataService_Stub : public DataService {
   void Del(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
                        const ::dataserver::DelRequest* request,
                        ::dataserver::DelResponse* response,
+                       ::google::protobuf::Closure* done);
+  void Dup(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
+                       const ::dataserver::DupRequest* request,
+                       ::dataserver::DupResponse* response,
+                       ::google::protobuf::Closure* done);
+  void ChangeMs(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
+                       const ::dataserver::ChangeMsRequest* request,
+                       ::dataserver::ChangeMsResponse* response,
+                       ::google::protobuf::Closure* done);
+  void DownGrade(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
+                       const ::dataserver::DownGradeRequest* request,
+                       ::dataserver::DownGradeResponse* response,
+                       ::google::protobuf::Closure* done);
+  void UpGrade(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
+                       const ::dataserver::UpGradeRequest* request,
+                       ::dataserver::UpGradeResponse* response,
                        ::google::protobuf::Closure* done);
  private:
   ::PROTOBUF_NAMESPACE_ID::RpcChannel* channel_;
@@ -1426,9 +2651,312 @@ inline void DelRequest::set_allocated_file_name(std::string* file_name) {
   // @@protoc_insertion_point(field_set_allocated:dataserver.DelRequest.file_name)
 }
 
+// -------------------------------------------------------------------
+
+// DupRequest
+
+// string contents = 1;
+inline void DupRequest::clear_contents() {
+  _impl_.contents_.ClearToEmpty();
+}
+inline const std::string& DupRequest::contents() const {
+  // @@protoc_insertion_point(field_get:dataserver.DupRequest.contents)
+  return _internal_contents();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void DupRequest::set_contents(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.contents_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:dataserver.DupRequest.contents)
+}
+inline std::string* DupRequest::mutable_contents() {
+  std::string* _s = _internal_mutable_contents();
+  // @@protoc_insertion_point(field_mutable:dataserver.DupRequest.contents)
+  return _s;
+}
+inline const std::string& DupRequest::_internal_contents() const {
+  return _impl_.contents_.Get();
+}
+inline void DupRequest::_internal_set_contents(const std::string& value) {
+  
+  _impl_.contents_.Set(value, GetArenaForAllocation());
+}
+inline std::string* DupRequest::_internal_mutable_contents() {
+  
+  return _impl_.contents_.Mutable(GetArenaForAllocation());
+}
+inline std::string* DupRequest::release_contents() {
+  // @@protoc_insertion_point(field_release:dataserver.DupRequest.contents)
+  return _impl_.contents_.Release();
+}
+inline void DupRequest::set_allocated_contents(std::string* contents) {
+  if (contents != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.contents_.SetAllocated(contents, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.contents_.IsDefault()) {
+    _impl_.contents_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:dataserver.DupRequest.contents)
+}
+
+// -------------------------------------------------------------------
+
+// DupResponse
+
+// bool success = 1;
+inline void DupResponse::clear_success() {
+  _impl_.success_ = false;
+}
+inline bool DupResponse::_internal_success() const {
+  return _impl_.success_;
+}
+inline bool DupResponse::success() const {
+  // @@protoc_insertion_point(field_get:dataserver.DupResponse.success)
+  return _internal_success();
+}
+inline void DupResponse::_internal_set_success(bool value) {
+  
+  _impl_.success_ = value;
+}
+inline void DupResponse::set_success(bool value) {
+  _internal_set_success(value);
+  // @@protoc_insertion_point(field_set:dataserver.DupResponse.success)
+}
+
+// -------------------------------------------------------------------
+
+// ChangeMsRequest
+
+// repeated string slave_name = 1;
+inline int ChangeMsRequest::_internal_slave_name_size() const {
+  return _impl_.slave_name_.size();
+}
+inline int ChangeMsRequest::slave_name_size() const {
+  return _internal_slave_name_size();
+}
+inline void ChangeMsRequest::clear_slave_name() {
+  _impl_.slave_name_.Clear();
+}
+inline std::string* ChangeMsRequest::add_slave_name() {
+  std::string* _s = _internal_add_slave_name();
+  // @@protoc_insertion_point(field_add_mutable:dataserver.ChangeMsRequest.slave_name)
+  return _s;
+}
+inline const std::string& ChangeMsRequest::_internal_slave_name(int index) const {
+  return _impl_.slave_name_.Get(index);
+}
+inline const std::string& ChangeMsRequest::slave_name(int index) const {
+  // @@protoc_insertion_point(field_get:dataserver.ChangeMsRequest.slave_name)
+  return _internal_slave_name(index);
+}
+inline std::string* ChangeMsRequest::mutable_slave_name(int index) {
+  // @@protoc_insertion_point(field_mutable:dataserver.ChangeMsRequest.slave_name)
+  return _impl_.slave_name_.Mutable(index);
+}
+inline void ChangeMsRequest::set_slave_name(int index, const std::string& value) {
+  _impl_.slave_name_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set:dataserver.ChangeMsRequest.slave_name)
+}
+inline void ChangeMsRequest::set_slave_name(int index, std::string&& value) {
+  _impl_.slave_name_.Mutable(index)->assign(std::move(value));
+  // @@protoc_insertion_point(field_set:dataserver.ChangeMsRequest.slave_name)
+}
+inline void ChangeMsRequest::set_slave_name(int index, const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _impl_.slave_name_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set_char:dataserver.ChangeMsRequest.slave_name)
+}
+inline void ChangeMsRequest::set_slave_name(int index, const char* value, size_t size) {
+  _impl_.slave_name_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:dataserver.ChangeMsRequest.slave_name)
+}
+inline std::string* ChangeMsRequest::_internal_add_slave_name() {
+  return _impl_.slave_name_.Add();
+}
+inline void ChangeMsRequest::add_slave_name(const std::string& value) {
+  _impl_.slave_name_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add:dataserver.ChangeMsRequest.slave_name)
+}
+inline void ChangeMsRequest::add_slave_name(std::string&& value) {
+  _impl_.slave_name_.Add(std::move(value));
+  // @@protoc_insertion_point(field_add:dataserver.ChangeMsRequest.slave_name)
+}
+inline void ChangeMsRequest::add_slave_name(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _impl_.slave_name_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:dataserver.ChangeMsRequest.slave_name)
+}
+inline void ChangeMsRequest::add_slave_name(const char* value, size_t size) {
+  _impl_.slave_name_.Add()->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:dataserver.ChangeMsRequest.slave_name)
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>&
+ChangeMsRequest::slave_name() const {
+  // @@protoc_insertion_point(field_list:dataserver.ChangeMsRequest.slave_name)
+  return _impl_.slave_name_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
+ChangeMsRequest::mutable_slave_name() {
+  // @@protoc_insertion_point(field_mutable_list:dataserver.ChangeMsRequest.slave_name)
+  return &_impl_.slave_name_;
+}
+
+// -------------------------------------------------------------------
+
+// ChangeMsResponse
+
+// bool success = 1;
+inline void ChangeMsResponse::clear_success() {
+  _impl_.success_ = false;
+}
+inline bool ChangeMsResponse::_internal_success() const {
+  return _impl_.success_;
+}
+inline bool ChangeMsResponse::success() const {
+  // @@protoc_insertion_point(field_get:dataserver.ChangeMsResponse.success)
+  return _internal_success();
+}
+inline void ChangeMsResponse::_internal_set_success(bool value) {
+  
+  _impl_.success_ = value;
+}
+inline void ChangeMsResponse::set_success(bool value) {
+  _internal_set_success(value);
+  // @@protoc_insertion_point(field_set:dataserver.ChangeMsResponse.success)
+}
+
+// -------------------------------------------------------------------
+
+// DownGradeRequest
+
+// -------------------------------------------------------------------
+
+// DownGradeResponse
+
+// bool success = 1;
+inline void DownGradeResponse::clear_success() {
+  _impl_.success_ = false;
+}
+inline bool DownGradeResponse::_internal_success() const {
+  return _impl_.success_;
+}
+inline bool DownGradeResponse::success() const {
+  // @@protoc_insertion_point(field_get:dataserver.DownGradeResponse.success)
+  return _internal_success();
+}
+inline void DownGradeResponse::_internal_set_success(bool value) {
+  
+  _impl_.success_ = value;
+}
+inline void DownGradeResponse::set_success(bool value) {
+  _internal_set_success(value);
+  // @@protoc_insertion_point(field_set:dataserver.DownGradeResponse.success)
+}
+
+// string name = 2;
+inline void DownGradeResponse::clear_name() {
+  _impl_.name_.ClearToEmpty();
+}
+inline const std::string& DownGradeResponse::name() const {
+  // @@protoc_insertion_point(field_get:dataserver.DownGradeResponse.name)
+  return _internal_name();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void DownGradeResponse::set_name(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.name_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:dataserver.DownGradeResponse.name)
+}
+inline std::string* DownGradeResponse::mutable_name() {
+  std::string* _s = _internal_mutable_name();
+  // @@protoc_insertion_point(field_mutable:dataserver.DownGradeResponse.name)
+  return _s;
+}
+inline const std::string& DownGradeResponse::_internal_name() const {
+  return _impl_.name_.Get();
+}
+inline void DownGradeResponse::_internal_set_name(const std::string& value) {
+  
+  _impl_.name_.Set(value, GetArenaForAllocation());
+}
+inline std::string* DownGradeResponse::_internal_mutable_name() {
+  
+  return _impl_.name_.Mutable(GetArenaForAllocation());
+}
+inline std::string* DownGradeResponse::release_name() {
+  // @@protoc_insertion_point(field_release:dataserver.DownGradeResponse.name)
+  return _impl_.name_.Release();
+}
+inline void DownGradeResponse::set_allocated_name(std::string* name) {
+  if (name != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.name_.SetAllocated(name, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.name_.IsDefault()) {
+    _impl_.name_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:dataserver.DownGradeResponse.name)
+}
+
+// -------------------------------------------------------------------
+
+// UpGradeRequest
+
+// -------------------------------------------------------------------
+
+// UpGradeResponse
+
+// bool success = 1;
+inline void UpGradeResponse::clear_success() {
+  _impl_.success_ = false;
+}
+inline bool UpGradeResponse::_internal_success() const {
+  return _impl_.success_;
+}
+inline bool UpGradeResponse::success() const {
+  // @@protoc_insertion_point(field_get:dataserver.UpGradeResponse.success)
+  return _internal_success();
+}
+inline void UpGradeResponse::_internal_set_success(bool value) {
+  
+  _impl_.success_ = value;
+}
+inline void UpGradeResponse::set_success(bool value) {
+  _internal_set_success(value);
+  // @@protoc_insertion_point(field_set:dataserver.UpGradeResponse.success)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

@@ -1,15 +1,4 @@
 #include "DataServer/DataServer.h"
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fstream>
-#include <iostream>
-#include <fcntl.h>
-#include <unistd.h>
-#include <sys/mman.h>
-#include <stdlib.h>
-#include <dirent.h>
-#include <stdio.h>
-#include <string.h>
 
 DataServer* DataServer::getInstance(){
     if(instance == nullptr){
@@ -47,7 +36,7 @@ void DataServer::Add(const string& file_name, const string& contents){
         int true_path_name_len = true_path_name.size();
         change_item.insert(2, string((char*)&true_path_name_len, 4));
         change_item += true_path_name;
-        change_buffer.push_back(change_item);
+        change_buffer.push(change_item);
     } else { // 添加文件 
         ofstream out;
         out.open(true_path_name, ios::out);
@@ -64,7 +53,7 @@ void DataServer::Add(const string& file_name, const string& contents){
         int contents_len = contents.size();
         change_item.insert(6+true_path_name_len, string((char*)&contents_len, 4));
         change_item += contents;
-        change_buffer.push_back(change_item);
+        change_buffer.push(change_item);
     }
 }
 char* DataServer::Get(const string& file_name){
@@ -104,7 +93,7 @@ void DataServer::Del(const string& file_name){ // TODO: 删除目录
         int true_path_name_len = true_path_name.size();
         change_item.insert(2, string((char*)&true_path_name_len, 4));
         change_item += true_path_name;
-        change_buffer.push_back(change_item);
+        change_buffer.push(change_item);
         return;
     }
     if(remove(true_path_name.c_str()) == 0){
@@ -116,7 +105,7 @@ void DataServer::Del(const string& file_name){ // TODO: 删除目录
         int true_path_name_len = true_path_name.size();
         change_item.insert(2, string((char*)&true_path_name_len, 4));
         change_item += true_path_name;
-        change_buffer.push_back(change_item);
+        change_buffer.push(change_item);
     }
 }
 void DataServer::Getfilepath(const char *path, const char *filename,  char *filepath)
@@ -154,4 +143,29 @@ void DataServer::DeleteFile(const char* path)
         }
         closedir(dir);
     }
+}
+
+void DataServer::sendContentsToSlaves() {
+    while(start){
+        if(!change_buffer.empty()) {
+            unique_lock<mutex> lock(change_buffer_lock);
+            const string& contents_ = change_buffer.front();
+            change_buffer.pop();
+            NameServerCli::getInstance()->sendDupContent(contents_.data());
+        }
+    }
+}
+
+void DataServer::UpGrade() {
+    role = "master";
+    for(int i=0;i<server_name.size();i++) {
+        if(server_name[i] == '_') {
+            server_name = server_name.substr(0, i+1);
+        }
+    }
+}
+
+void DataServer::DownGrade() {
+    role = "slave";
+    server_name = ChangeToSlaveName(server_name);
 }

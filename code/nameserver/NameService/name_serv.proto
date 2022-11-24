@@ -7,10 +7,10 @@ option cc_generic_services = true;
 message HeartBeatRequest
 {
     string name = 1;
-    string host = 4;
-    bool has_change = 2;
-    repeated string change_files = 3;
-    repeated bool add = 5;
+    string host = 2;
+    int32 port = 5;
+    string role = 3;
+    repeated int32 score = 4;
 }
 
 message HeartBeatResponse

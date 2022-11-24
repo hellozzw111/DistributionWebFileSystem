@@ -30,8 +30,45 @@ message DelRequest {
     string file_name = 1;
 }
 
+message DupRequest {
+    string contents = 1;
+}
+
+message DupResponse {
+    bool success = 1;
+}
+
+message ChangeMsRequest {
+    repeated string slave_name = 1;
+}
+
+message ChangeMsResponse {
+    bool success = 1;
+}
+
+message DownGradeRequest {
+
+}
+
+message DownGradeResponse {
+    bool success = 1;
+    string name = 2;
+}
+
+message UpGradeRequest {
+
+}
+
+message UpGradeResponse {
+    bool success = 1;
+}
+
 service DataService {
     rpc Add(AddRequest) returns (AddResponse);
     rpc Get(GetRequest) returns (GetResponse);
     rpc Del(DelRequest) returns (DelResponse);
+    rpc Dup(DupRequest) returns (DupResponse);
+    rpc ChangeMs(ChangeMsRequest) returns (ChangeMsResponse);
+    rpc DownGrade(DownGradeRequest) returns (DownGradeResponse);
+    rpc UpGrade(UpGradeRequest) returns (UpGradeResponse);
 }

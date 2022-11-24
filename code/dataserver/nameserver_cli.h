@@ -1,47 +1,45 @@
-#ifndef  __NAME_SERVER_CLIENT_H_
-#define  __NAME_SERVER_CLIENT_H_
-
-
+// 两种类型的 dataserver 1. master  2. slave
+// 启动rpc服务
 #include <string>
-#include <map>
+#include "mprpcapplication.h"
+#include "rpcprovider.h"
 #include <vector>
+#include <unordered_map>
 
-#include <boost/shared_ptr.hpp>
+using namespace std;
 
-#include "distribute_alg.h"
-#include "ketamadist_alg.h"
-#include "rpc/rpc_channel.h"
-#include "proto/name_serv.pb.h"
-
-namespace dist_storage {
-
-namespace dist_client {
-
-class NameServerClient {
-    public:
-        NameServerClient();
-
-        ~NameServerClient();
-
-        // get info from name server
-        bool GetBucketInfo(BUCKET_NODE_MAP& bucket_node_map);
-
-        bool GetNodeInfo(std::vector<std::string>& node_list, std::string& ds_port);
-
-    private:
-        // get init paramters
-        bool ClientInit();
-        
-    private:
-         Channel* rpc_channel_ptr_;
-
-         NameService::Stub* service_stub_ptr_;
-
+struct nameserverstatus {
+    string name;
+    string ip;
+    int port;
+    string role;
+    int score;
 };
 
-}  // end of namespace dist_client
-
-}  // end of namespace dist_storage
-
-
-#endif // end of __NAME_SERVER_CLIENT_H_
+class NameServerCli {
+public:
+    NameServerCli(const NameServerCli& ns) = delete;
+    NameServerCli operator=(const NameServerCli& ns) = delete;
+    static NameServerCli* getInstance();
+    void initNameServerCli(string name, string ip, int port, string role) {
+        this->name = name;
+        this->ip = ip;
+        this->port = port;
+        this->role = role;
+        initRpcService();
+    }
+    void initRpcService();
+    void initTimer();
+    void sendHeartBeat();
+    void sendDupContent(const char* content);
+private:
+    NameServerCli();
+    static NameServerCli* instance;
+    static mutex M_mutex;
+    string name;
+    string ip;
+    int port;
+    string role;
+    unordered_map<string, nameserverstatus> slaves;
+    dataserver::DataService_Stub stub;
+};

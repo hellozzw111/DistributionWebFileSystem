@@ -23,11 +23,12 @@ namespace _pbi = _pb::internal;
 namespace nameserver {
 PROTOBUF_CONSTEXPR HeartBeatRequest::HeartBeatRequest(
     ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.change_files_)*/{}
-  , /*decltype(_impl_.add_)*/{}
+    /*decltype(_impl_.score_)*/{}
+  , /*decltype(_impl_._score_cached_byte_size_)*/{0}
   , /*decltype(_impl_.name_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.host_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_.has_change_)*/false
+  , /*decltype(_impl_.role_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.port_)*/0
   , /*decltype(_impl_._cached_size_)*/{}} {}
 struct HeartBeatRequestDefaultTypeInternal {
   PROTOBUF_CONSTEXPR HeartBeatRequestDefaultTypeInternal()
@@ -67,9 +68,9 @@ const uint32_t TableStruct_name_5fserv_2eproto::offsets[] PROTOBUF_SECTION_VARIA
   ~0u,  // no sizeof(Split)
   PROTOBUF_FIELD_OFFSET(::nameserver::HeartBeatRequest, _impl_.name_),
   PROTOBUF_FIELD_OFFSET(::nameserver::HeartBeatRequest, _impl_.host_),
-  PROTOBUF_FIELD_OFFSET(::nameserver::HeartBeatRequest, _impl_.has_change_),
-  PROTOBUF_FIELD_OFFSET(::nameserver::HeartBeatRequest, _impl_.change_files_),
-  PROTOBUF_FIELD_OFFSET(::nameserver::HeartBeatRequest, _impl_.add_),
+  PROTOBUF_FIELD_OFFSET(::nameserver::HeartBeatRequest, _impl_.port_),
+  PROTOBUF_FIELD_OFFSET(::nameserver::HeartBeatRequest, _impl_.role_),
+  PROTOBUF_FIELD_OFFSET(::nameserver::HeartBeatRequest, _impl_.score_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::nameserver::HeartBeatResponse, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -91,17 +92,17 @@ static const ::_pb::Message* const file_default_instances[] = {
 };
 
 const char descriptor_table_protodef_name_5fserv_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\017name_serv.proto\022\nnameserver\"e\n\020HeartBe"
-  "atRequest\022\014\n\004name\030\001 \001(\t\022\014\n\004host\030\004 \001(\t\022\022\n"
-  "\nhas_change\030\002 \001(\010\022\024\n\014change_files\030\003 \003(\t\022"
-  "\013\n\003add\030\005 \003(\010\"$\n\021HeartBeatResponse\022\017\n\007suc"
-  "cess\030\001 \001(\0102W\n\013NameService\022H\n\tHeartBeat\022\034"
-  ".nameserver.HeartBeatRequest\032\035.nameserve"
-  "r.HeartBeatResponseB\003\200\001\001b\006proto3"
+  "\n\017name_serv.proto\022\nnameserver\"Y\n\020HeartBe"
+  "atRequest\022\014\n\004name\030\001 \001(\t\022\014\n\004host\030\002 \001(\t\022\014\n"
+  "\004port\030\005 \001(\005\022\014\n\004role\030\003 \001(\t\022\r\n\005score\030\004 \003(\005"
+  "\"$\n\021HeartBeatResponse\022\017\n\007success\030\001 \001(\0102W"
+  "\n\013NameService\022H\n\tHeartBeat\022\034.nameserver."
+  "HeartBeatRequest\032\035.nameserver.HeartBeatR"
+  "esponseB\003\200\001\001b\006proto3"
   ;
 static ::_pbi::once_flag descriptor_table_name_5fserv_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_name_5fserv_2eproto = {
-    false, false, 272, descriptor_table_protodef_name_5fserv_2eproto,
+    false, false, 260, descriptor_table_protodef_name_5fserv_2eproto,
     "name_serv.proto",
     &descriptor_table_name_5fserv_2eproto_once, nullptr, 0, 2,
     schemas, file_default_instances, TableStruct_name_5fserv_2eproto::offsets,
@@ -132,11 +133,12 @@ HeartBeatRequest::HeartBeatRequest(const HeartBeatRequest& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   HeartBeatRequest* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_.change_files_){from._impl_.change_files_}
-    , decltype(_impl_.add_){from._impl_.add_}
+      decltype(_impl_.score_){from._impl_.score_}
+    , /*decltype(_impl_._score_cached_byte_size_)*/{0}
     , decltype(_impl_.name_){}
     , decltype(_impl_.host_){}
-    , decltype(_impl_.has_change_){}
+    , decltype(_impl_.role_){}
+    , decltype(_impl_.port_){}
     , /*decltype(_impl_._cached_size_)*/{}};
 
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
@@ -156,7 +158,15 @@ HeartBeatRequest::HeartBeatRequest(const HeartBeatRequest& from)
     _this->_impl_.host_.Set(from._internal_host(), 
       _this->GetArenaForAllocation());
   }
-  _this->_impl_.has_change_ = from._impl_.has_change_;
+  _impl_.role_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.role_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_role().empty()) {
+    _this->_impl_.role_.Set(from._internal_role(), 
+      _this->GetArenaForAllocation());
+  }
+  _this->_impl_.port_ = from._impl_.port_;
   // @@protoc_insertion_point(copy_constructor:nameserver.HeartBeatRequest)
 }
 
@@ -165,11 +175,12 @@ inline void HeartBeatRequest::SharedCtor(
   (void)arena;
   (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_.change_files_){arena}
-    , decltype(_impl_.add_){arena}
+      decltype(_impl_.score_){arena}
+    , /*decltype(_impl_._score_cached_byte_size_)*/{0}
     , decltype(_impl_.name_){}
     , decltype(_impl_.host_){}
-    , decltype(_impl_.has_change_){false}
+    , decltype(_impl_.role_){}
+    , decltype(_impl_.port_){0}
     , /*decltype(_impl_._cached_size_)*/{}
   };
   _impl_.name_.InitDefault();
@@ -179,6 +190,10 @@ inline void HeartBeatRequest::SharedCtor(
   _impl_.host_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
     _impl_.host_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.role_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.role_.Set("", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
@@ -193,10 +208,10 @@ HeartBeatRequest::~HeartBeatRequest() {
 
 inline void HeartBeatRequest::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.change_files_.~RepeatedPtrField();
-  _impl_.add_.~RepeatedField();
+  _impl_.score_.~RepeatedField();
   _impl_.name_.Destroy();
   _impl_.host_.Destroy();
+  _impl_.role_.Destroy();
 }
 
 void HeartBeatRequest::SetCachedSize(int size) const {
@@ -209,11 +224,11 @@ void HeartBeatRequest::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _impl_.change_files_.Clear();
-  _impl_.add_.Clear();
+  _impl_.score_.Clear();
   _impl_.name_.ClearToEmpty();
   _impl_.host_.ClearToEmpty();
-  _impl_.has_change_ = false;
+  _impl_.role_.ClearToEmpty();
+  _impl_.port_ = 0;
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -233,32 +248,9 @@ const char* HeartBeatRequest::_InternalParse(const char* ptr, ::_pbi::ParseConte
         } else
           goto handle_unusual;
         continue;
-      // bool has_change = 2;
+      // string host = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
-          _impl_.has_change_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // repeated string change_files = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
-          ptr -= 1;
-          do {
-            ptr += 1;
-            auto str = _internal_add_change_files();
-            ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
-            CHK_(ptr);
-            CHK_(::_pbi::VerifyUTF8(str, "nameserver.HeartBeatRequest.change_files"));
-            if (!ctx->DataAvailable(ptr)) break;
-          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<26>(ptr));
-        } else
-          goto handle_unusual;
-        continue;
-      // string host = 4;
-      case 4:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
           auto str = _internal_mutable_host();
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
@@ -266,13 +258,31 @@ const char* HeartBeatRequest::_InternalParse(const char* ptr, ::_pbi::ParseConte
         } else
           goto handle_unusual;
         continue;
-      // repeated bool add = 5;
-      case 5:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 42)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedBoolParser(_internal_mutable_add(), ptr, ctx);
+      // string role = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          auto str = _internal_mutable_role();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-        } else if (static_cast<uint8_t>(tag) == 40) {
-          _internal_add_add(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr));
+          CHK_(::_pbi::VerifyUTF8(str, "nameserver.HeartBeatRequest.role"));
+        } else
+          goto handle_unusual;
+        continue;
+      // repeated int32 score = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedInt32Parser(_internal_mutable_score(), ptr, ctx);
+          CHK_(ptr);
+        } else if (static_cast<uint8_t>(tag) == 32) {
+          _internal_add_score(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr));
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // int32 port = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 40)) {
+          _impl_.port_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -316,35 +326,39 @@ uint8_t* HeartBeatRequest::_InternalSerialize(
         1, this->_internal_name(), target);
   }
 
-  // bool has_change = 2;
-  if (this->_internal_has_change() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteBoolToArray(2, this->_internal_has_change(), target);
-  }
-
-  // repeated string change_files = 3;
-  for (int i = 0, n = this->_internal_change_files_size(); i < n; i++) {
-    const auto& s = this->_internal_change_files(i);
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      s.data(), static_cast<int>(s.length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "nameserver.HeartBeatRequest.change_files");
-    target = stream->WriteString(3, s, target);
-  }
-
-  // string host = 4;
+  // string host = 2;
   if (!this->_internal_host().empty()) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_host().data(), static_cast<int>(this->_internal_host().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "nameserver.HeartBeatRequest.host");
     target = stream->WriteStringMaybeAliased(
-        4, this->_internal_host(), target);
+        2, this->_internal_host(), target);
   }
 
-  // repeated bool add = 5;
-  if (this->_internal_add_size() > 0) {
-    target = stream->WriteFixedPacked(5, _internal_add(), target);
+  // string role = 3;
+  if (!this->_internal_role().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_role().data(), static_cast<int>(this->_internal_role().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "nameserver.HeartBeatRequest.role");
+    target = stream->WriteStringMaybeAliased(
+        3, this->_internal_role(), target);
+  }
+
+  // repeated int32 score = 4;
+  {
+    int byte_size = _impl_._score_cached_byte_size_.Get();
+    if (byte_size > 0) {
+      target = stream->WriteInt32Packed(
+          4, _internal_score(), byte_size, target);
+    }
+  }
+
+  // int32 port = 5;
+  if (this->_internal_port() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(5, this->_internal_port(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -363,22 +377,16 @@ size_t HeartBeatRequest::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // repeated string change_files = 3;
-  total_size += 1 *
-      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(_impl_.change_files_.size());
-  for (int i = 0, n = _impl_.change_files_.size(); i < n; i++) {
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-      _impl_.change_files_.Get(i));
-  }
-
-  // repeated bool add = 5;
+  // repeated int32 score = 4;
   {
-    unsigned int count = static_cast<unsigned int>(this->_internal_add_size());
-    size_t data_size = 1UL * count;
+    size_t data_size = ::_pbi::WireFormatLite::
+      Int32Size(this->_impl_.score_);
     if (data_size > 0) {
       total_size += 1 +
         ::_pbi::WireFormatLite::Int32Size(static_cast<int32_t>(data_size));
     }
+    int cached_size = ::_pbi::ToCachedSize(data_size);
+    _impl_._score_cached_byte_size_.Set(cached_size);
     total_size += data_size;
   }
 
@@ -389,16 +397,23 @@ size_t HeartBeatRequest::ByteSizeLong() const {
         this->_internal_name());
   }
 
-  // string host = 4;
+  // string host = 2;
   if (!this->_internal_host().empty()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_host());
   }
 
-  // bool has_change = 2;
-  if (this->_internal_has_change() != 0) {
-    total_size += 1 + 1;
+  // string role = 3;
+  if (!this->_internal_role().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_role());
+  }
+
+  // int32 port = 5;
+  if (this->_internal_port() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_port());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
@@ -419,16 +434,18 @@ void HeartBeatRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  _this->_impl_.change_files_.MergeFrom(from._impl_.change_files_);
-  _this->_impl_.add_.MergeFrom(from._impl_.add_);
+  _this->_impl_.score_.MergeFrom(from._impl_.score_);
   if (!from._internal_name().empty()) {
     _this->_internal_set_name(from._internal_name());
   }
   if (!from._internal_host().empty()) {
     _this->_internal_set_host(from._internal_host());
   }
-  if (from._internal_has_change() != 0) {
-    _this->_internal_set_has_change(from._internal_has_change());
+  if (!from._internal_role().empty()) {
+    _this->_internal_set_role(from._internal_role());
+  }
+  if (from._internal_port() != 0) {
+    _this->_internal_set_port(from._internal_port());
   }
   _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
@@ -449,8 +466,7 @@ void HeartBeatRequest::InternalSwap(HeartBeatRequest* other) {
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  _impl_.change_files_.InternalSwap(&other->_impl_.change_files_);
-  _impl_.add_.InternalSwap(&other->_impl_.add_);
+  _impl_.score_.InternalSwap(&other->_impl_.score_);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &_impl_.name_, lhs_arena,
       &other->_impl_.name_, rhs_arena
@@ -459,7 +475,11 @@ void HeartBeatRequest::InternalSwap(HeartBeatRequest* other) {
       &_impl_.host_, lhs_arena,
       &other->_impl_.host_, rhs_arena
   );
-  swap(_impl_.has_change_, other->_impl_.has_change_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.role_, lhs_arena,
+      &other->_impl_.role_, rhs_arena
+  );
+  swap(_impl_.port_, other->_impl_.port_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata HeartBeatRequest::GetMetadata() const {

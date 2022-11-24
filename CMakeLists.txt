@@ -20,6 +20,7 @@ include_directories(${PROJECT_SOURCE_DIR}/code/timer)
 include_directories(${PROJECT_SOURCE_DIR}/code/nameserver)
 include_directories(${PROJECT_SOURCE_DIR}/code/dataserver)
 include_directories(${PROJECT_SOURCE_DIR}/code/thirdparty/mprpc/lib/include)
+include_directories(${PROJECT_SOURCE_DIR}/code/rpc)
 
 
 # 加载子目录

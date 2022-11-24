@@ -19,9 +19,20 @@ public:
             const ::dataserver::DelRequest* request,
             ::dataserver::DelResponse* response,
             ::google::protobuf::Closure* done);
-private:
-    DataServer* dataserver_instance;
-    void init_dataserver(){
-        dataserver_instance = DataServer::getInstance();
-    }
-}
+    void Dup(::google::protobuf::RpcController* controller,
+             const ::dataserver::DupRequest* request,
+             ::dataserver::DupResponse* reponse,
+             ::google::protobuf::Closure* done);
+    void ChangeMs(::google::protobuf::RpcController* controller,
+                  const ::dataserver::ChangeMsRequest* request, 
+                  ::dataserver::ChangeMsResponse* response,
+                  ::google::protobuf::Closure* done);
+    void DownGrade(::google::protobuf::RpcController* controller,
+                   const ::dataserver::DownGradeRequest* request,
+                   ::dataserver::DownGradeResponse* response,
+                   ::google::protobuf::Closure* done);
+    void UpGrade(::google::protobuf::RpcController* controller,
+                  const ::dataserver::UpGradeRequest* request, 
+                  ::dataserver::UpGradeResponse* response,
+                  ::google::protobuf::Closure* done);
+};

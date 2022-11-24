@@ -182,57 +182,33 @@ class HeartBeatRequest final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kChangeFilesFieldNumber = 3,
-    kAddFieldNumber = 5,
+    kScoreFieldNumber = 4,
     kNameFieldNumber = 1,
-    kHostFieldNumber = 4,
-    kHasChangeFieldNumber = 2,
+    kHostFieldNumber = 2,
+    kRoleFieldNumber = 3,
+    kPortFieldNumber = 5,
   };
-  // repeated string change_files = 3;
-  int change_files_size() const;
+  // repeated int32 score = 4;
+  int score_size() const;
   private:
-  int _internal_change_files_size() const;
+  int _internal_score_size() const;
   public:
-  void clear_change_files();
-  const std::string& change_files(int index) const;
-  std::string* mutable_change_files(int index);
-  void set_change_files(int index, const std::string& value);
-  void set_change_files(int index, std::string&& value);
-  void set_change_files(int index, const char* value);
-  void set_change_files(int index, const char* value, size_t size);
-  std::string* add_change_files();
-  void add_change_files(const std::string& value);
-  void add_change_files(std::string&& value);
-  void add_change_files(const char* value);
-  void add_change_files(const char* value, size_t size);
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>& change_files() const;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>* mutable_change_files();
+  void clear_score();
   private:
-  const std::string& _internal_change_files(int index) const;
-  std::string* _internal_add_change_files();
+  int32_t _internal_score(int index) const;
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
+      _internal_score() const;
+  void _internal_add_score(int32_t value);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
+      _internal_mutable_score();
   public:
-
-  // repeated bool add = 5;
-  int add_size() const;
-  private:
-  int _internal_add_size() const;
-  public:
-  void clear_add();
-  private:
-  bool _internal_add(int index) const;
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< bool >&
-      _internal_add() const;
-  void _internal_add_add(bool value);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< bool >*
-      _internal_mutable_add();
-  public:
-  bool add(int index) const;
-  void set_add(int index, bool value);
-  void add_add(bool value);
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< bool >&
-      add() const;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< bool >*
-      mutable_add();
+  int32_t score(int index) const;
+  void set_score(int index, int32_t value);
+  void add_score(int32_t value);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
+      score() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
+      mutable_score();
 
   // string name = 1;
   void clear_name();
@@ -248,7 +224,7 @@ class HeartBeatRequest final :
   std::string* _internal_mutable_name();
   public:
 
-  // string host = 4;
+  // string host = 2;
   void clear_host();
   const std::string& host() const;
   template <typename ArgT0 = const std::string&, typename... ArgT>
@@ -262,13 +238,27 @@ class HeartBeatRequest final :
   std::string* _internal_mutable_host();
   public:
 
-  // bool has_change = 2;
-  void clear_has_change();
-  bool has_change() const;
-  void set_has_change(bool value);
+  // string role = 3;
+  void clear_role();
+  const std::string& role() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_role(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_role();
+  PROTOBUF_NODISCARD std::string* release_role();
+  void set_allocated_role(std::string* role);
   private:
-  bool _internal_has_change() const;
-  void _internal_set_has_change(bool value);
+  const std::string& _internal_role() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_role(const std::string& value);
+  std::string* _internal_mutable_role();
+  public:
+
+  // int32 port = 5;
+  void clear_port();
+  int32_t port() const;
+  void set_port(int32_t value);
+  private:
+  int32_t _internal_port() const;
+  void _internal_set_port(int32_t value);
   public:
 
   // @@protoc_insertion_point(class_scope:nameserver.HeartBeatRequest)
@@ -279,11 +269,12 @@ class HeartBeatRequest final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   struct Impl_ {
-    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> change_files_;
-    ::PROTOBUF_NAMESPACE_ID::RepeatedField< bool > add_;
+    ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t > score_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _score_cached_byte_size_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr name_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr host_;
-    bool has_change_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr role_;
+    int32_t port_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
   union { Impl_ _impl_; };
@@ -557,7 +548,7 @@ inline void HeartBeatRequest::set_allocated_name(std::string* name) {
   // @@protoc_insertion_point(field_set_allocated:nameserver.HeartBeatRequest.name)
 }
 
-// string host = 4;
+// string host = 2;
 inline void HeartBeatRequest::clear_host() {
   _impl_.host_.ClearToEmpty();
 }
@@ -607,146 +598,121 @@ inline void HeartBeatRequest::set_allocated_host(std::string* host) {
   // @@protoc_insertion_point(field_set_allocated:nameserver.HeartBeatRequest.host)
 }
 
-// bool has_change = 2;
-inline void HeartBeatRequest::clear_has_change() {
-  _impl_.has_change_ = false;
+// int32 port = 5;
+inline void HeartBeatRequest::clear_port() {
+  _impl_.port_ = 0;
 }
-inline bool HeartBeatRequest::_internal_has_change() const {
-  return _impl_.has_change_;
+inline int32_t HeartBeatRequest::_internal_port() const {
+  return _impl_.port_;
 }
-inline bool HeartBeatRequest::has_change() const {
-  // @@protoc_insertion_point(field_get:nameserver.HeartBeatRequest.has_change)
-  return _internal_has_change();
+inline int32_t HeartBeatRequest::port() const {
+  // @@protoc_insertion_point(field_get:nameserver.HeartBeatRequest.port)
+  return _internal_port();
 }
-inline void HeartBeatRequest::_internal_set_has_change(bool value) {
+inline void HeartBeatRequest::_internal_set_port(int32_t value) {
   
-  _impl_.has_change_ = value;
+  _impl_.port_ = value;
 }
-inline void HeartBeatRequest::set_has_change(bool value) {
-  _internal_set_has_change(value);
-  // @@protoc_insertion_point(field_set:nameserver.HeartBeatRequest.has_change)
+inline void HeartBeatRequest::set_port(int32_t value) {
+  _internal_set_port(value);
+  // @@protoc_insertion_point(field_set:nameserver.HeartBeatRequest.port)
 }
 
-// repeated string change_files = 3;
-inline int HeartBeatRequest::_internal_change_files_size() const {
-  return _impl_.change_files_.size();
+// string role = 3;
+inline void HeartBeatRequest::clear_role() {
+  _impl_.role_.ClearToEmpty();
 }
-inline int HeartBeatRequest::change_files_size() const {
-  return _internal_change_files_size();
+inline const std::string& HeartBeatRequest::role() const {
+  // @@protoc_insertion_point(field_get:nameserver.HeartBeatRequest.role)
+  return _internal_role();
 }
-inline void HeartBeatRequest::clear_change_files() {
-  _impl_.change_files_.Clear();
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void HeartBeatRequest::set_role(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.role_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:nameserver.HeartBeatRequest.role)
 }
-inline std::string* HeartBeatRequest::add_change_files() {
-  std::string* _s = _internal_add_change_files();
-  // @@protoc_insertion_point(field_add_mutable:nameserver.HeartBeatRequest.change_files)
+inline std::string* HeartBeatRequest::mutable_role() {
+  std::string* _s = _internal_mutable_role();
+  // @@protoc_insertion_point(field_mutable:nameserver.HeartBeatRequest.role)
   return _s;
 }
-inline const std::string& HeartBeatRequest::_internal_change_files(int index) const {
-  return _impl_.change_files_.Get(index);
+inline const std::string& HeartBeatRequest::_internal_role() const {
+  return _impl_.role_.Get();
 }
-inline const std::string& HeartBeatRequest::change_files(int index) const {
-  // @@protoc_insertion_point(field_get:nameserver.HeartBeatRequest.change_files)
-  return _internal_change_files(index);
+inline void HeartBeatRequest::_internal_set_role(const std::string& value) {
+  
+  _impl_.role_.Set(value, GetArenaForAllocation());
 }
-inline std::string* HeartBeatRequest::mutable_change_files(int index) {
-  // @@protoc_insertion_point(field_mutable:nameserver.HeartBeatRequest.change_files)
-  return _impl_.change_files_.Mutable(index);
+inline std::string* HeartBeatRequest::_internal_mutable_role() {
+  
+  return _impl_.role_.Mutable(GetArenaForAllocation());
 }
-inline void HeartBeatRequest::set_change_files(int index, const std::string& value) {
-  _impl_.change_files_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set:nameserver.HeartBeatRequest.change_files)
+inline std::string* HeartBeatRequest::release_role() {
+  // @@protoc_insertion_point(field_release:nameserver.HeartBeatRequest.role)
+  return _impl_.role_.Release();
 }
-inline void HeartBeatRequest::set_change_files(int index, std::string&& value) {
-  _impl_.change_files_.Mutable(index)->assign(std::move(value));
-  // @@protoc_insertion_point(field_set:nameserver.HeartBeatRequest.change_files)
-}
-inline void HeartBeatRequest::set_change_files(int index, const char* value) {
-  GOOGLE_DCHECK(value != nullptr);
-  _impl_.change_files_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set_char:nameserver.HeartBeatRequest.change_files)
-}
-inline void HeartBeatRequest::set_change_files(int index, const char* value, size_t size) {
-  _impl_.change_files_.Mutable(index)->assign(
-    reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:nameserver.HeartBeatRequest.change_files)
-}
-inline std::string* HeartBeatRequest::_internal_add_change_files() {
-  return _impl_.change_files_.Add();
-}
-inline void HeartBeatRequest::add_change_files(const std::string& value) {
-  _impl_.change_files_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add:nameserver.HeartBeatRequest.change_files)
-}
-inline void HeartBeatRequest::add_change_files(std::string&& value) {
-  _impl_.change_files_.Add(std::move(value));
-  // @@protoc_insertion_point(field_add:nameserver.HeartBeatRequest.change_files)
-}
-inline void HeartBeatRequest::add_change_files(const char* value) {
-  GOOGLE_DCHECK(value != nullptr);
-  _impl_.change_files_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add_char:nameserver.HeartBeatRequest.change_files)
-}
-inline void HeartBeatRequest::add_change_files(const char* value, size_t size) {
-  _impl_.change_files_.Add()->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_add_pointer:nameserver.HeartBeatRequest.change_files)
-}
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>&
-HeartBeatRequest::change_files() const {
-  // @@protoc_insertion_point(field_list:nameserver.HeartBeatRequest.change_files)
-  return _impl_.change_files_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
-HeartBeatRequest::mutable_change_files() {
-  // @@protoc_insertion_point(field_mutable_list:nameserver.HeartBeatRequest.change_files)
-  return &_impl_.change_files_;
+inline void HeartBeatRequest::set_allocated_role(std::string* role) {
+  if (role != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.role_.SetAllocated(role, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.role_.IsDefault()) {
+    _impl_.role_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:nameserver.HeartBeatRequest.role)
 }
 
-// repeated bool add = 5;
-inline int HeartBeatRequest::_internal_add_size() const {
-  return _impl_.add_.size();
+// repeated int32 score = 4;
+inline int HeartBeatRequest::_internal_score_size() const {
+  return _impl_.score_.size();
 }
-inline int HeartBeatRequest::add_size() const {
-  return _internal_add_size();
+inline int HeartBeatRequest::score_size() const {
+  return _internal_score_size();
 }
-inline void HeartBeatRequest::clear_add() {
-  _impl_.add_.Clear();
+inline void HeartBeatRequest::clear_score() {
+  _impl_.score_.Clear();
 }
-inline bool HeartBeatRequest::_internal_add(int index) const {
-  return _impl_.add_.Get(index);
+inline int32_t HeartBeatRequest::_internal_score(int index) const {
+  return _impl_.score_.Get(index);
 }
-inline bool HeartBeatRequest::add(int index) const {
-  // @@protoc_insertion_point(field_get:nameserver.HeartBeatRequest.add)
-  return _internal_add(index);
+inline int32_t HeartBeatRequest::score(int index) const {
+  // @@protoc_insertion_point(field_get:nameserver.HeartBeatRequest.score)
+  return _internal_score(index);
 }
-inline void HeartBeatRequest::set_add(int index, bool value) {
-  _impl_.add_.Set(index, value);
-  // @@protoc_insertion_point(field_set:nameserver.HeartBeatRequest.add)
+inline void HeartBeatRequest::set_score(int index, int32_t value) {
+  _impl_.score_.Set(index, value);
+  // @@protoc_insertion_point(field_set:nameserver.HeartBeatRequest.score)
 }
-inline void HeartBeatRequest::_internal_add_add(bool value) {
-  _impl_.add_.Add(value);
+inline void HeartBeatRequest::_internal_add_score(int32_t value) {
+  _impl_.score_.Add(value);
 }
-inline void HeartBeatRequest::add_add(bool value) {
-  _internal_add_add(value);
-  // @@protoc_insertion_point(field_add:nameserver.HeartBeatRequest.add)
+inline void HeartBeatRequest::add_score(int32_t value) {
+  _internal_add_score(value);
+  // @@protoc_insertion_point(field_add:nameserver.HeartBeatRequest.score)
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< bool >&
-HeartBeatRequest::_internal_add() const {
-  return _impl_.add_;
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
+HeartBeatRequest::_internal_score() const {
+  return _impl_.score_;
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< bool >&
-HeartBeatRequest::add() const {
-  // @@protoc_insertion_point(field_list:nameserver.HeartBeatRequest.add)
-  return _internal_add();
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
+HeartBeatRequest::score() const {
+  // @@protoc_insertion_point(field_list:nameserver.HeartBeatRequest.score)
+  return _internal_score();
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< bool >*
-HeartBeatRequest::_internal_mutable_add() {
-  return &_impl_.add_;
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
+HeartBeatRequest::_internal_mutable_score() {
+  return &_impl_.score_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< bool >*
-HeartBeatRequest::mutable_add() {
-  // @@protoc_insertion_point(field_mutable_list:nameserver.HeartBeatRequest.add)
-  return _internal_mutable_add();
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
+HeartBeatRequest::mutable_score() {
+  // @@protoc_insertion_point(field_mutable_list:nameserver.HeartBeatRequest.score)
+  return _internal_mutable_score();
 }
 
 // -------------------------------------------------------------------

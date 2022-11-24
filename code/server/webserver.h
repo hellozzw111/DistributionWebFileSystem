@@ -33,6 +33,7 @@ public:
 
     ~WebServer();
     void Start();
+    void CheckHeartBeat(int sig);
 
 private:
     bool InitSocket_(); 
