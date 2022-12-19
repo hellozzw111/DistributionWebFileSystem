@@ -31,6 +31,7 @@ public:
     void checkHeartBeat();
     void dealDisconnect(status& obj);
     void upgradeServer(status& slave);
+    void downgradeServer(status& master);
     void updataStatus(status& obj, int score);
     status& getStatus(string server_name);
     unordered_map<string, set<string>>& getMasterSlaves() { return master_slaves; }

@@ -1,0 +1,9 @@
+role: master
+name: /node1
+prefix_name: /
+ip:
+  - host: 124.220.24.66
+  - zookeeper: 124.220.24.66
+port:
+  - host: 12345
+  - zookeeper: 12346

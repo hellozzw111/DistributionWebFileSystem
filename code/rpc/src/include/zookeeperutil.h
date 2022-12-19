@@ -15,7 +15,12 @@ public:
     // 在zkserver上根据指定的path创建znode节点
     void Create(const char *path, const char *data, int datalen, int state=0);
     // 根据参数指定的znode节点路径，或者znode节点的值
+    void Delete(const char *path);
+    // 根据指定的znode节点路径删除该节点
+    void ChangeName(bool up, const char* path);
+    // 根据path更改节点名称
     std::string GetData(const char *path);
+    bool isExist(const char* path);
 private:
     // zk的客户端句柄
     zhandle_t *m_zhandle;

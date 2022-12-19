@@ -202,8 +202,62 @@ struct UpGradeResponseDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UpGradeResponseDefaultTypeInternal _UpGradeResponse_default_instance_;
+PROTOBUF_CONSTEXPR Directory::Directory(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.file_name_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct DirectoryDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR DirectoryDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~DirectoryDefaultTypeInternal() {}
+  union {
+    Directory _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DirectoryDefaultTypeInternal _Directory_default_instance_;
+PROTOBUF_CONSTEXPR Files::Files(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.file_name_)*/{}
+  , /*decltype(_impl_.directory_name_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct FilesDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR FilesDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~FilesDefaultTypeInternal() {}
+  union {
+    Files _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 FilesDefaultTypeInternal _Files_default_instance_;
+PROTOBUF_CONSTEXPR SyncFileRequest::SyncFileRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.files_)*/nullptr
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct SyncFileRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SyncFileRequestDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SyncFileRequestDefaultTypeInternal() {}
+  union {
+    SyncFileRequest _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SyncFileRequestDefaultTypeInternal _SyncFileRequest_default_instance_;
+PROTOBUF_CONSTEXPR SyncFileResponse::SyncFileResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.add_files_)*/{}
+  , /*decltype(_impl_.del_files_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct SyncFileResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SyncFileResponseDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SyncFileResponseDefaultTypeInternal() {}
+  union {
+    SyncFileResponse _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SyncFileResponseDefaultTypeInternal _SyncFileResponse_default_instance_;
 }  // namespace dataserver
-static ::_pb::Metadata file_level_metadata_data_5fserv_2eproto[14];
+static ::_pb::Metadata file_level_metadata_data_5fserv_2eproto[18];
 static constexpr ::_pb::EnumDescriptor const** file_level_enum_descriptors_data_5fserv_2eproto = nullptr;
 static const ::_pb::ServiceDescriptor* file_level_service_descriptors_data_5fserv_2eproto[1];
 
@@ -335,6 +389,44 @@ const uint32_t TableStruct_data_5fserv_2eproto::offsets[] PROTOBUF_SECTION_VARIA
   ~0u,  // no _split_
   ~0u,  // no sizeof(Split)
   PROTOBUF_FIELD_OFFSET(::dataserver::UpGradeResponse, _impl_.success_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::dataserver::Directory, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  ~0u,  // no _split_
+  ~0u,  // no sizeof(Split)
+  PROTOBUF_FIELD_OFFSET(::dataserver::Directory, _impl_.file_name_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::dataserver::Files, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  ~0u,  // no _split_
+  ~0u,  // no sizeof(Split)
+  PROTOBUF_FIELD_OFFSET(::dataserver::Files, _impl_.file_name_),
+  PROTOBUF_FIELD_OFFSET(::dataserver::Files, _impl_.directory_name_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::dataserver::SyncFileRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  ~0u,  // no _split_
+  ~0u,  // no sizeof(Split)
+  PROTOBUF_FIELD_OFFSET(::dataserver::SyncFileRequest, _impl_.files_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::dataserver::SyncFileResponse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  ~0u,  // no _split_
+  ~0u,  // no sizeof(Split)
+  PROTOBUF_FIELD_OFFSET(::dataserver::SyncFileResponse, _impl_.add_files_),
+  PROTOBUF_FIELD_OFFSET(::dataserver::SyncFileResponse, _impl_.del_files_),
 };
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::dataserver::AddResponse)},
@@ -351,6 +443,10 @@ static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protode
   { 100, -1, -1, sizeof(::dataserver::DownGradeResponse)},
   { 110, -1, -1, sizeof(::dataserver::UpGradeRequest)},
   { 118, -1, -1, sizeof(::dataserver::UpGradeResponse)},
+  { 127, -1, -1, sizeof(::dataserver::Directory)},
+  { 136, -1, -1, sizeof(::dataserver::Files)},
+  { 146, -1, -1, sizeof(::dataserver::SyncFileRequest)},
+  { 155, -1, -1, sizeof(::dataserver::SyncFileResponse)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -368,6 +464,10 @@ static const ::_pb::Message* const file_default_instances[] = {
   &::dataserver::_DownGradeResponse_default_instance_._instance,
   &::dataserver::_UpGradeRequest_default_instance_._instance,
   &::dataserver::_UpGradeResponse_default_instance_._instance,
+  &::dataserver::_Directory_default_instance_._instance,
+  &::dataserver::_Files_default_instance_._instance,
+  &::dataserver::_SyncFileRequest_default_instance_._instance,
+  &::dataserver::_SyncFileResponse_default_instance_._instance,
 };
 
 const char descriptor_table_protodef_data_5fserv_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
@@ -384,24 +484,32 @@ const char descriptor_table_protodef_data_5fserv_2eproto[] PROTOBUF_SECTION_VARI
   "\"\022\n\020DownGradeRequest\"2\n\021DownGradeRespons"
   "e\022\017\n\007success\030\001 \001(\010\022\014\n\004name\030\002 \001(\t\"\020\n\016UpGr"
   "adeRequest\"\"\n\017UpGradeResponse\022\017\n\007success"
-  "\030\001 \001(\0102\302\003\n\013DataService\0226\n\003Add\022\026.dataserv"
-  "er.AddRequest\032\027.dataserver.AddResponse\0226"
-  "\n\003Get\022\026.dataserver.GetRequest\032\027.dataserv"
-  "er.GetResponse\0226\n\003Del\022\026.dataserver.DelRe"
-  "quest\032\027.dataserver.DelResponse\0226\n\003Dup\022\026."
-  "dataserver.DupRequest\032\027.dataserver.DupRe"
-  "sponse\022E\n\010ChangeMs\022\033.dataserver.ChangeMs"
-  "Request\032\034.dataserver.ChangeMsResponse\022H\n"
-  "\tDownGrade\022\034.dataserver.DownGradeRequest"
-  "\032\035.dataserver.DownGradeResponse\022B\n\007UpGra"
-  "de\022\032.dataserver.UpGradeRequest\032\033.dataser"
-  "ver.UpGradeResponseB\003\200\001\001b\006proto3"
+  "\030\001 \001(\010\"\036\n\tDirectory\022\021\n\tfile_name\030\001 \003(\t\"I"
+  "\n\005Files\022\021\n\tfile_name\030\001 \003(\t\022-\n\016directory_"
+  "name\030\002 \003(\0132\025.dataserver.Directory\"3\n\017Syn"
+  "cFileRequest\022 \n\005files\030\001 \001(\0132\021.dataserver"
+  ".Files\"8\n\020SyncFileResponse\022\021\n\tadd_files\030"
+  "\001 \003(\t\022\021\n\tdel_files\030\002 \003(\t2\211\004\n\013DataService"
+  "\0226\n\003Add\022\026.dataserver.AddRequest\032\027.datase"
+  "rver.AddResponse\0226\n\003Get\022\026.dataserver.Get"
+  "Request\032\027.dataserver.GetResponse\0226\n\003Del\022"
+  "\026.dataserver.DelRequest\032\027.dataserver.Del"
+  "Response\0226\n\003Dup\022\026.dataserver.DupRequest\032"
+  "\027.dataserver.DupResponse\022E\n\010ChangeMs\022\033.d"
+  "ataserver.ChangeMsRequest\032\034.dataserver.C"
+  "hangeMsResponse\022H\n\tDownGrade\022\034.dataserve"
+  "r.DownGradeRequest\032\035.dataserver.DownGrad"
+  "eResponse\022B\n\007UpGrade\022\032.dataserver.UpGrad"
+  "eRequest\032\033.dataserver.UpGradeResponse\022E\n"
+  "\010SyncFile\022\033.dataserver.SyncFileRequest\032\034"
+  ".dataserver.SyncFileResponseB\003\200\001\001b\006proto"
+  "3"
   ;
 static ::_pbi::once_flag descriptor_table_data_5fserv_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_data_5fserv_2eproto = {
-    false, false, 992, descriptor_table_protodef_data_5fserv_2eproto,
+    false, false, 1281, descriptor_table_protodef_data_5fserv_2eproto,
     "data_serv.proto",
-    &descriptor_table_data_5fserv_2eproto_once, nullptr, 0, 14,
+    &descriptor_table_data_5fserv_2eproto_once, nullptr, 0, 18,
     schemas, file_default_instances, TableStruct_data_5fserv_2eproto::offsets,
     file_level_metadata_data_5fserv_2eproto, file_level_enum_descriptors_data_5fserv_2eproto,
     file_level_service_descriptors_data_5fserv_2eproto,
@@ -2888,6 +2996,842 @@ void UpGradeResponse::InternalSwap(UpGradeResponse* other) {
 
 // ===================================================================
 
+class Directory::_Internal {
+ public:
+};
+
+Directory::Directory(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:dataserver.Directory)
+}
+Directory::Directory(const Directory& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  Directory* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.file_name_){from._impl_.file_name_}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  // @@protoc_insertion_point(copy_constructor:dataserver.Directory)
+}
+
+inline void Directory::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.file_name_){arena}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+}
+
+Directory::~Directory() {
+  // @@protoc_insertion_point(destructor:dataserver.Directory)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void Directory::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.file_name_.~RepeatedPtrField();
+}
+
+void Directory::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void Directory::Clear() {
+// @@protoc_insertion_point(message_clear_start:dataserver.Directory)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.file_name_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* Directory::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // repeated string file_name = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            auto str = _internal_add_file_name();
+            ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+            CHK_(ptr);
+            CHK_(::_pbi::VerifyUTF8(str, "dataserver.Directory.file_name"));
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* Directory::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:dataserver.Directory)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // repeated string file_name = 1;
+  for (int i = 0, n = this->_internal_file_name_size(); i < n; i++) {
+    const auto& s = this->_internal_file_name(i);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      s.data(), static_cast<int>(s.length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "dataserver.Directory.file_name");
+    target = stream->WriteString(1, s, target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:dataserver.Directory)
+  return target;
+}
+
+size_t Directory::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:dataserver.Directory)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // repeated string file_name = 1;
+  total_size += 1 *
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(_impl_.file_name_.size());
+  for (int i = 0, n = _impl_.file_name_.size(); i < n; i++) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+      _impl_.file_name_.Get(i));
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData Directory::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    Directory::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Directory::GetClassData() const { return &_class_data_; }
+
+
+void Directory::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<Directory*>(&to_msg);
+  auto& from = static_cast<const Directory&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:dataserver.Directory)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  _this->_impl_.file_name_.MergeFrom(from._impl_.file_name_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void Directory::CopyFrom(const Directory& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:dataserver.Directory)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool Directory::IsInitialized() const {
+  return true;
+}
+
+void Directory::InternalSwap(Directory* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _impl_.file_name_.InternalSwap(&other->_impl_.file_name_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata Directory::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_data_5fserv_2eproto_getter, &descriptor_table_data_5fserv_2eproto_once,
+      file_level_metadata_data_5fserv_2eproto[14]);
+}
+
+// ===================================================================
+
+class Files::_Internal {
+ public:
+};
+
+Files::Files(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:dataserver.Files)
+}
+Files::Files(const Files& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  Files* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.file_name_){from._impl_.file_name_}
+    , decltype(_impl_.directory_name_){from._impl_.directory_name_}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  // @@protoc_insertion_point(copy_constructor:dataserver.Files)
+}
+
+inline void Files::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.file_name_){arena}
+    , decltype(_impl_.directory_name_){arena}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+}
+
+Files::~Files() {
+  // @@protoc_insertion_point(destructor:dataserver.Files)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void Files::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.file_name_.~RepeatedPtrField();
+  _impl_.directory_name_.~RepeatedPtrField();
+}
+
+void Files::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void Files::Clear() {
+// @@protoc_insertion_point(message_clear_start:dataserver.Files)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.file_name_.Clear();
+  _impl_.directory_name_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* Files::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // repeated string file_name = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            auto str = _internal_add_file_name();
+            ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+            CHK_(ptr);
+            CHK_(::_pbi::VerifyUTF8(str, "dataserver.Files.file_name"));
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
+        } else
+          goto handle_unusual;
+        continue;
+      // repeated .dataserver.Directory directory_name = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_directory_name(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<18>(ptr));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* Files::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:dataserver.Files)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // repeated string file_name = 1;
+  for (int i = 0, n = this->_internal_file_name_size(); i < n; i++) {
+    const auto& s = this->_internal_file_name(i);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      s.data(), static_cast<int>(s.length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "dataserver.Files.file_name");
+    target = stream->WriteString(1, s, target);
+  }
+
+  // repeated .dataserver.Directory directory_name = 2;
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_directory_name_size()); i < n; i++) {
+    const auto& repfield = this->_internal_directory_name(i);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+        InternalWriteMessage(2, repfield, repfield.GetCachedSize(), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:dataserver.Files)
+  return target;
+}
+
+size_t Files::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:dataserver.Files)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // repeated string file_name = 1;
+  total_size += 1 *
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(_impl_.file_name_.size());
+  for (int i = 0, n = _impl_.file_name_.size(); i < n; i++) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+      _impl_.file_name_.Get(i));
+  }
+
+  // repeated .dataserver.Directory directory_name = 2;
+  total_size += 1UL * this->_internal_directory_name_size();
+  for (const auto& msg : this->_impl_.directory_name_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData Files::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    Files::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Files::GetClassData() const { return &_class_data_; }
+
+
+void Files::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<Files*>(&to_msg);
+  auto& from = static_cast<const Files&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:dataserver.Files)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  _this->_impl_.file_name_.MergeFrom(from._impl_.file_name_);
+  _this->_impl_.directory_name_.MergeFrom(from._impl_.directory_name_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void Files::CopyFrom(const Files& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:dataserver.Files)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool Files::IsInitialized() const {
+  return true;
+}
+
+void Files::InternalSwap(Files* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _impl_.file_name_.InternalSwap(&other->_impl_.file_name_);
+  _impl_.directory_name_.InternalSwap(&other->_impl_.directory_name_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata Files::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_data_5fserv_2eproto_getter, &descriptor_table_data_5fserv_2eproto_once,
+      file_level_metadata_data_5fserv_2eproto[15]);
+}
+
+// ===================================================================
+
+class SyncFileRequest::_Internal {
+ public:
+  static const ::dataserver::Files& files(const SyncFileRequest* msg);
+};
+
+const ::dataserver::Files&
+SyncFileRequest::_Internal::files(const SyncFileRequest* msg) {
+  return *msg->_impl_.files_;
+}
+SyncFileRequest::SyncFileRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:dataserver.SyncFileRequest)
+}
+SyncFileRequest::SyncFileRequest(const SyncFileRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  SyncFileRequest* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.files_){nullptr}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if (from._internal_has_files()) {
+    _this->_impl_.files_ = new ::dataserver::Files(*from._impl_.files_);
+  }
+  // @@protoc_insertion_point(copy_constructor:dataserver.SyncFileRequest)
+}
+
+inline void SyncFileRequest::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.files_){nullptr}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+}
+
+SyncFileRequest::~SyncFileRequest() {
+  // @@protoc_insertion_point(destructor:dataserver.SyncFileRequest)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void SyncFileRequest::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete _impl_.files_;
+}
+
+void SyncFileRequest::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void SyncFileRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:dataserver.SyncFileRequest)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  if (GetArenaForAllocation() == nullptr && _impl_.files_ != nullptr) {
+    delete _impl_.files_;
+  }
+  _impl_.files_ = nullptr;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* SyncFileRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // .dataserver.Files files = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_files(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* SyncFileRequest::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:dataserver.SyncFileRequest)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // .dataserver.Files files = 1;
+  if (this->_internal_has_files()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(1, _Internal::files(this),
+        _Internal::files(this).GetCachedSize(), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:dataserver.SyncFileRequest)
+  return target;
+}
+
+size_t SyncFileRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:dataserver.SyncFileRequest)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // .dataserver.Files files = 1;
+  if (this->_internal_has_files()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.files_);
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData SyncFileRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    SyncFileRequest::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*SyncFileRequest::GetClassData() const { return &_class_data_; }
+
+
+void SyncFileRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<SyncFileRequest*>(&to_msg);
+  auto& from = static_cast<const SyncFileRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:dataserver.SyncFileRequest)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_has_files()) {
+    _this->_internal_mutable_files()->::dataserver::Files::MergeFrom(
+        from._internal_files());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void SyncFileRequest::CopyFrom(const SyncFileRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:dataserver.SyncFileRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool SyncFileRequest::IsInitialized() const {
+  return true;
+}
+
+void SyncFileRequest::InternalSwap(SyncFileRequest* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_.files_, other->_impl_.files_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata SyncFileRequest::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_data_5fserv_2eproto_getter, &descriptor_table_data_5fserv_2eproto_once,
+      file_level_metadata_data_5fserv_2eproto[16]);
+}
+
+// ===================================================================
+
+class SyncFileResponse::_Internal {
+ public:
+};
+
+SyncFileResponse::SyncFileResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:dataserver.SyncFileResponse)
+}
+SyncFileResponse::SyncFileResponse(const SyncFileResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  SyncFileResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.add_files_){from._impl_.add_files_}
+    , decltype(_impl_.del_files_){from._impl_.del_files_}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  // @@protoc_insertion_point(copy_constructor:dataserver.SyncFileResponse)
+}
+
+inline void SyncFileResponse::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.add_files_){arena}
+    , decltype(_impl_.del_files_){arena}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+}
+
+SyncFileResponse::~SyncFileResponse() {
+  // @@protoc_insertion_point(destructor:dataserver.SyncFileResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void SyncFileResponse::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.add_files_.~RepeatedPtrField();
+  _impl_.del_files_.~RepeatedPtrField();
+}
+
+void SyncFileResponse::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void SyncFileResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:dataserver.SyncFileResponse)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.add_files_.Clear();
+  _impl_.del_files_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* SyncFileResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // repeated string add_files = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            auto str = _internal_add_add_files();
+            ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+            CHK_(ptr);
+            CHK_(::_pbi::VerifyUTF8(str, "dataserver.SyncFileResponse.add_files"));
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
+        } else
+          goto handle_unusual;
+        continue;
+      // repeated string del_files = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            auto str = _internal_add_del_files();
+            ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+            CHK_(ptr);
+            CHK_(::_pbi::VerifyUTF8(str, "dataserver.SyncFileResponse.del_files"));
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<18>(ptr));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* SyncFileResponse::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:dataserver.SyncFileResponse)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // repeated string add_files = 1;
+  for (int i = 0, n = this->_internal_add_files_size(); i < n; i++) {
+    const auto& s = this->_internal_add_files(i);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      s.data(), static_cast<int>(s.length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "dataserver.SyncFileResponse.add_files");
+    target = stream->WriteString(1, s, target);
+  }
+
+  // repeated string del_files = 2;
+  for (int i = 0, n = this->_internal_del_files_size(); i < n; i++) {
+    const auto& s = this->_internal_del_files(i);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      s.data(), static_cast<int>(s.length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "dataserver.SyncFileResponse.del_files");
+    target = stream->WriteString(2, s, target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:dataserver.SyncFileResponse)
+  return target;
+}
+
+size_t SyncFileResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:dataserver.SyncFileResponse)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // repeated string add_files = 1;
+  total_size += 1 *
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(_impl_.add_files_.size());
+  for (int i = 0, n = _impl_.add_files_.size(); i < n; i++) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+      _impl_.add_files_.Get(i));
+  }
+
+  // repeated string del_files = 2;
+  total_size += 1 *
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(_impl_.del_files_.size());
+  for (int i = 0, n = _impl_.del_files_.size(); i < n; i++) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+      _impl_.del_files_.Get(i));
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData SyncFileResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    SyncFileResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*SyncFileResponse::GetClassData() const { return &_class_data_; }
+
+
+void SyncFileResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<SyncFileResponse*>(&to_msg);
+  auto& from = static_cast<const SyncFileResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:dataserver.SyncFileResponse)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  _this->_impl_.add_files_.MergeFrom(from._impl_.add_files_);
+  _this->_impl_.del_files_.MergeFrom(from._impl_.del_files_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void SyncFileResponse::CopyFrom(const SyncFileResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:dataserver.SyncFileResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool SyncFileResponse::IsInitialized() const {
+  return true;
+}
+
+void SyncFileResponse::InternalSwap(SyncFileResponse* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _impl_.add_files_.InternalSwap(&other->_impl_.add_files_);
+  _impl_.del_files_.InternalSwap(&other->_impl_.del_files_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata SyncFileResponse::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_data_5fserv_2eproto_getter, &descriptor_table_data_5fserv_2eproto_once,
+      file_level_metadata_data_5fserv_2eproto[17]);
+}
+
+// ===================================================================
+
 DataService::~DataService() {}
 
 const ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor* DataService::descriptor() {
@@ -2955,6 +3899,14 @@ void DataService::UpGrade(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
   done->Run();
 }
 
+void DataService::SyncFile(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
+                         const ::dataserver::SyncFileRequest*,
+                         ::dataserver::SyncFileResponse*,
+                         ::google::protobuf::Closure* done) {
+  controller->SetFailed("Method SyncFile() not implemented.");
+  done->Run();
+}
+
 void DataService::CallMethod(const ::PROTOBUF_NAMESPACE_ID::MethodDescriptor* method,
                              ::PROTOBUF_NAMESPACE_ID::RpcController* controller,
                              const ::PROTOBUF_NAMESPACE_ID::Message* request,
@@ -3018,6 +3970,14 @@ void DataService::CallMethod(const ::PROTOBUF_NAMESPACE_ID::MethodDescriptor* me
                  response),
              done);
       break;
+    case 7:
+      SyncFile(controller,
+             ::PROTOBUF_NAMESPACE_ID::internal::DownCast<const ::dataserver::SyncFileRequest*>(
+                 request),
+             ::PROTOBUF_NAMESPACE_ID::internal::DownCast<::dataserver::SyncFileResponse*>(
+                 response),
+             done);
+      break;
     default:
       GOOGLE_LOG(FATAL) << "Bad method index; this should never happen.";
       break;
@@ -3042,6 +4002,8 @@ const ::PROTOBUF_NAMESPACE_ID::Message& DataService::GetRequestPrototype(
       return ::dataserver::DownGradeRequest::default_instance();
     case 6:
       return ::dataserver::UpGradeRequest::default_instance();
+    case 7:
+      return ::dataserver::SyncFileRequest::default_instance();
     default:
       GOOGLE_LOG(FATAL) << "Bad method index; this should never happen.";
       return *::PROTOBUF_NAMESPACE_ID::MessageFactory::generated_factory()
@@ -3067,6 +4029,8 @@ const ::PROTOBUF_NAMESPACE_ID::Message& DataService::GetResponsePrototype(
       return ::dataserver::DownGradeResponse::default_instance();
     case 6:
       return ::dataserver::UpGradeResponse::default_instance();
+    case 7:
+      return ::dataserver::SyncFileResponse::default_instance();
     default:
       GOOGLE_LOG(FATAL) << "Bad method index; this should never happen.";
       return *::PROTOBUF_NAMESPACE_ID::MessageFactory::generated_factory()
@@ -3134,6 +4098,13 @@ void DataService_Stub::UpGrade(::PROTOBUF_NAMESPACE_ID::RpcController* controlle
   channel_->CallMethod(descriptor()->method(6),
                        controller, request, response, done);
 }
+void DataService_Stub::SyncFile(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
+                              const ::dataserver::SyncFileRequest* request,
+                              ::dataserver::SyncFileResponse* response,
+                              ::google::protobuf::Closure* done) {
+  channel_->CallMethod(descriptor()->method(7),
+                       controller, request, response, done);
+}
 
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace dataserver
@@ -3193,6 +4164,22 @@ Arena::CreateMaybeMessage< ::dataserver::UpGradeRequest >(Arena* arena) {
 template<> PROTOBUF_NOINLINE ::dataserver::UpGradeResponse*
 Arena::CreateMaybeMessage< ::dataserver::UpGradeResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::dataserver::UpGradeResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::dataserver::Directory*
+Arena::CreateMaybeMessage< ::dataserver::Directory >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::dataserver::Directory >(arena);
+}
+template<> PROTOBUF_NOINLINE ::dataserver::Files*
+Arena::CreateMaybeMessage< ::dataserver::Files >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::dataserver::Files >(arena);
+}
+template<> PROTOBUF_NOINLINE ::dataserver::SyncFileRequest*
+Arena::CreateMaybeMessage< ::dataserver::SyncFileRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::dataserver::SyncFileRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::dataserver::SyncFileResponse*
+Arena::CreateMaybeMessage< ::dataserver::SyncFileResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::dataserver::SyncFileResponse >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 

@@ -1,14 +1,35 @@
 #include "DataServer/DataServer.h"
+extern "C"{
+    #include <sys/types.h>
+    #include <sys/stat.h>
+    #include <unistd.h>
+    #include <errno.h>
+    #include <dirent.h>
+    #include <stdio.h>
+    #include <stdlib.h>
+    #include <string.h>
+}
 
-DataServer* DataServer::getInstance(){
+DataServer* DataServer::getInstance(std::string role, std::string name, std::string prefix_name, std::string ip, int port, std::string zookeeper_ip, int zookeeper_port) {
     if(instance == nullptr){
         unique_lock<mutex> lock(M_mutex);
         if(instance == nullptr){
-            instance = new (nothrow) DataServer();
+            instance = new (nothrow) DataServer(role, name, prefix_name, ip, port, zookeeper_ip, zookeeper_port);
         }
     }
     return instance;
 }
+
+DataServer::DataServer(std::string role, std::string name, std::string prefix_name, std::string ip, int port, std::string zookeeper_ip, int zookeeper_port) {
+    this->role = role;
+    this->server_name = name;
+    this->prefix_name = prefix_name;
+    this->ip = ip;
+    this->port = port;
+    this->zookeeper_ip = zookeeper_ip;
+    this->zookeeper_port = zookeeper_port;
+}
+
 void DataServer::freeInstance(){
     if(instance != nullptr){
         unique_lock<mutex> lock(M_mutex);
@@ -114,7 +135,6 @@ void DataServer::Getfilepath(const char *path, const char *filename,  char *file
     if(filepath[strlen(path) - 1] != '/')
         strcat(filepath, "/");
     strcat(filepath, filename);
-	printf("path is = %s\n",filepath);
 }
  
 void DataServer::DeleteFile(const char* path)
@@ -136,7 +156,7 @@ void DataServer::DeleteFile(const char* path)
         while ((dirinfo = readdir(dir)) != NULL)
         {
             Getfilepath(path, dirinfo->d_name, filepath);
-            if (strcmp(dirinfo->d_name, ".") == 0 || strcmp(dirinfo->d_name, "..") == 0)//判断是否是特殊目录
+            if (strcmp(dirinfo->d_name, ".") == 0 || strcmp(dirinfo->d_name, "..") == 0) //判断是否是特殊目录
             continue;
             DeleteFile(filepath);
             rmdir(filepath);
@@ -158,6 +178,7 @@ void DataServer::sendContentsToSlaves() {
 
 void DataServer::UpGrade() {
     role = "master";
+    ChangeToMasterName(server_name);
     for(int i=0;i<server_name.size();i++) {
         if(server_name[i] == '_') {
             server_name = server_name.substr(0, i+1);
@@ -165,7 +186,46 @@ void DataServer::UpGrade() {
     }
 }
 
-void DataServer::DownGrade() {
+const std::string& DataServer::DownGrade() {
     role = "slave";
     server_name = ChangeToSlaveName(server_name);
+    while(!change_buffer.empty()) {
+        change_buffer.pop();
+    }
+    change_buffer_left = change_buffer_right = -1;
+    return server_name;
+}
+
+string DataServer::ChangeToSlaveName(string server_name) {
+    ZkClient zkcli;
+    string pre_buffer = zkcli.GetData(server_name.c_str());
+     zkcli.Delete(server_name.c_str());
+    server_name.push_back('_');
+    for(int i=1;;i++){
+        string tmp = server_name;
+        tmp.push_back(i+48);
+        if(! zkcli.isExist(tmp.c_str())) {
+            server_name = tmp;
+            break;
+        }
+    }
+     zkcli.Create(server_name.c_str(), pre_buffer.c_str(), pre_buffer.size(), 0);
+}
+
+string DataServer::ChangeToMasterName(string server_name) {
+    ZkClient zkcli;
+    string pre_buffer = zkcli.GetData(server_name.c_str());
+    zkcli.Delete(server_name.c_str());
+    for(int i=0;i<server_name.size();i++){
+        if(server_name[i] == '_') {
+            server_name = server_name.substr(0, i+1);
+            break;
+        }
+    }
+    zkcli.Create(server_name.c_str(), pre_buffer.c_str(), pre_buffer.size(), 0);
+}
+
+void DataServer::SyncFile(std::vector<std::string> files_name, std::vector<::dataserver::Directory> directorys_name)
+{
+    
 }

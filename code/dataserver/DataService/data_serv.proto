@@ -63,6 +63,24 @@ message UpGradeResponse {
     bool success = 1;
 }
 
+message Directory {
+    repeated string file_name = 1;
+}
+
+message Files {
+    repeated string file_name = 1;
+    repeated Directory directory_name = 2;
+}
+
+message SyncFileRequest {
+    Files files = 1;
+}
+
+message SyncFileResponse {
+    repeated string add_files = 1;
+    repeated string del_files = 2;
+}
+
 service DataService {
     rpc Add(AddRequest) returns (AddResponse);
     rpc Get(GetRequest) returns (GetResponse);
@@ -71,4 +89,5 @@ service DataService {
     rpc ChangeMs(ChangeMsRequest) returns (ChangeMsResponse);
     rpc DownGrade(DownGradeRequest) returns (DownGradeResponse);
     rpc UpGrade(UpGradeRequest) returns (UpGradeResponse);
+    rpc SyncFile(SyncFileRequest) returns (SyncFileResponse);
 }

@@ -35,4 +35,8 @@ public:
                   const ::dataserver::UpGradeRequest* request, 
                   ::dataserver::UpGradeResponse* response,
                   ::google::protobuf::Closure* done);
+    void SyncFile(::google::protobuf::RpcController* controller,
+                  const ::dataserver::SyncFileRequest* request, 
+                  ::dataserver::SyncFileResponse* response,
+                  ::google::protobuf::Closure* done);
 };

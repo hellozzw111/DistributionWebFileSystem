@@ -1,10 +1,7 @@
 #include "nameserver_cli.h"
-#include "DataService/DataService.h"
-#include "DataService/data_serv.pb.h"
-#include "NameService/name_serv.pb.h"
 
-void NameServerCli::initRpcService() {
-    MprpcApplication::Init(argc, argv);
+void NameServerCli::initRpcService(std::string name, std::string role, std::string ip, int host, std::string zookeeper_ip, int zook) {
+    // MprpcApplication::Init();
 
     // provider是一个rpc网络服务对象。把UserService对象发布到rpc节点上
     RpcProvider provider;
@@ -15,22 +12,20 @@ void NameServerCli::initRpcService() {
 }
 
 void NameServerCli::sendHeartBeat() {
-    nameserver::FiendServiceRpc_Stub stub(new MprpcChannel()); // MprpcChannel添加参数用来判断选择那个对象进行发送
+    nameserver::NameService_Stub stub(new MprpcChannel()); // MprpcChannel添加参数用来判断选择那个对象进行发送
     // rpc方法的请求参数
     nameserver::HeartBeatRequest request;
     request.set_name(name);
-    request.set_ip(ip);
+    request.set_host(ip);
     request.set_port(port);
     request.set_role(role);
     if(role == "master"){
-        vector<uint32_t> slaves_score;
-        for(auto it=slaves.begin();it!=slaves.end();i++){
-            slaves_score.push_back((*it).second.score);
+        for(auto it=slaves.begin();it!=slaves.end();it++){
+            request.add_score((*it).second.score);
         }
-        request.set_score(slaves_score);
     }
     // rpc方法的响应
-    fixbug::GetFriendsListResponse response;
+    nameserver::HeartBeatResponse response;
     // 发起rpc方法的调用  同步的rpc调用过程  MprpcChannel::callmethod
     MprpcController controller;
     stub.HeartBeat(&controller, &request, &response, nullptr); // RpcChannel->RpcChannel::callMethod 集中来做所有rpc方法调用的参数序列化和网络发送
@@ -49,7 +44,7 @@ void NameServerCli::initTimer() {
 	//信号处理
 	if (SIG_ERR == signal(SIGALRM, sendHeartBeat)) {
 		perror("signal");
-		return -1;
+		return;
 	}
 	//设置定时时长: 0.5ms
 	itv.it_interval.tv_sec  = 0;
@@ -79,7 +74,7 @@ void NameServerCli::sendDupContent(const char* contents_) {
         request.set_contents({contents_, strlen(contents_)});
         MprpcController controller;
         stub.Dup(&controller, &request, &response, nullptr);
-        if(response.success) {
+        if(response.success()) {
             it->second.score++;
         }
         it++;

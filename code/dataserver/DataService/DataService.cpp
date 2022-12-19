@@ -2,6 +2,7 @@
 #include <fstream>
 #include <iostream>
 #include <string>
+#include <vector>
 
 void DataService::Add(::google::protobuf::RpcController* controller,
             const ::dataserver::AddRequest* request,
@@ -70,23 +71,43 @@ void DataService::Dup(::google::protobuf::RpcController* controller,
     }else{
         DataServer::getInstance()->Del(file_path);
     }
+    response->set_success(true);
+    done->Run();
 }
 
 void ChangeMs(::google::protobuf::RpcController* controller,
                   const ::dataserver::ChangeMsRequest* request, 
                   ::dataserver::ChangeMsResponse* response,
                   ::google::protobuf::Closure* done) {
-    
+    DataServer::getInstance()->ChangeMs();
+    reponse->set_success(true);
+    done->Run();
 }
 void DownGrade(::google::protobuf::RpcController* controller,
                 const ::dataserver::DownGradeRequest* request,
                 ::dataserver::DownGradeResponse* response,
                 ::google::protobuf::Closure* done) {
+    const std::string server_name = DataServer::getInstance()->DownGrade();
+    response->set_success(true);
+    response->set_name(server_name);
+    done->Run();
     
 }
 void UpGrade(::google::protobuf::RpcController* controller,
                 const ::dataserver::UpGradeRequest* request, 
                 ::dataserver::UpGradeResponse* response,
                 ::google::protobuf::Closure* done) {
-    
+    DataServer::getInstance()->UpGrade();
+    done->Run();
+}
+
+void SyncFile(::google::protobuf::RpcController* controller,
+                  const ::dataserver::SyncFileRequest* request, 
+                  ::dataserver::SyncFileResponse* response,
+                  ::google::protobuf::Closure* done) {
+    ::dataserver::Files files = request->files();
+    std::vector<std::string> files_name = files.file_name();
+    std::vector<::dataserver::Directorys> directorys_name = files.directory_name();
+    DataServer::getInstance()->SyncFile(files_name, directorys_name);
+    done->Run();
 }

@@ -44,7 +44,7 @@ private:
     static DataServerConfig* instance;
     static mutex M_mutex;
     string ip;
-    string port;
+    int port;
     string file_path;
     string server_name;
 };

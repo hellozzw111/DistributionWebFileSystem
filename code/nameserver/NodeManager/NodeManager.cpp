@@ -83,7 +83,7 @@ void NodeManager::UpdateNodeFile(string file_name, bool add, Node* cur_node){
         }
     }
 }
-void deleteNodeFile(Node* cur_node){
+void NodeManager::deleteNodeFile(Node* cur_node){
     if(cur_node->is_file){
         delete cur_node;
     }else{
@@ -91,4 +91,7 @@ void deleteNodeFile(Node* cur_node){
             deleteNodeFile(*it);
         }
     }
+}
+Node* NodeManager::getNodeTree() {
+    return NodeTree;
 }
